@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <?php require_once 'layout/head.php'; ?>
+    <?php require_once 'layout/head.php' ?>
 </head>
 <body>
 <?php
-require_once 'CommonFunctions.php';
+require_once 'DBFunctions.php';
 require_once 'layout/navbar.php';
 ?>
 

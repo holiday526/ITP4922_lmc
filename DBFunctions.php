@@ -1,7 +1,5 @@
 <?php
 
-require 'dbconn.php';
-
 function getDbConn() {
     $db_hostname = "192.168.1.100";
     $db_username = "root";
@@ -44,7 +42,10 @@ function getAppointments($user_id = "") {
 /** cars */
 function getCars($user_id = "") {
     $query = 'SELECT * FROM `cars`';
-
+    if ($user_id != "") {
+        $query = $query." WHERE ownerId = '$user_id'";
+    }
+    return get($query);
 }
 
 /** car_brands */
