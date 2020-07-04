@@ -18,7 +18,7 @@ function get($query) {
     $conn = getDbConn();
     $collection = [];
     $result = $conn->query($query);
-    while ($row = $result->fetch_array(MYSQLI_NUM)) {
+    while ($row = $result->fetch_assoc()) {
         array_push($collection, $row);
     }
     mysqli_close($conn);
@@ -33,16 +33,18 @@ function getAllAdmins() {
 
 /** appointments */
 // for admins
-function getAllAppointments($user_id = "A000002") {
-
-    $query = "SELECT * FROM `appointments`";
-    if ($user_id) {
-        $query." WHERE appointmentUserId = \'$user_id\'";
+function getAppointments($user_id = "") {
+    $query = 'SELECT * FROM `appointments`';
+    if ($user_id != "") {
+        $query = $query." WHERE appointmentUserId = '$user_id'";
     }
-    echo $query;
     return get($query);
 }
 
 /** cars */
+function getCars($user_id = "") {
+    $query = 'SELECT * FROM `cars`';
+
+}
 
 /** car_brands */
