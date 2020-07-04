@@ -17,6 +17,12 @@ if (isset($_GET['route'])){
 
 require_once "./page/$page.php";
 
+require_once 'CommonFunctions.php';
+
+echo "<pre>";
+var_dump(getAllAdmins());
+echo "</pre>";
+
 ?>
 <?php require_once 'layout/footer.php'; ?>
 <?php require_once 'layout/footer-script.php'; ?>

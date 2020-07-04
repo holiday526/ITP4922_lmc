@@ -1,8 +1,8 @@
 <?php
 
-$db_hostname = "localhost";
+$db_hostname = "192.168.1.100";
 $db_username = "root";
-$db_password = "";
+$db_password = "2fi@Solutions";
 $db_database = "autocardb";
 $conn = new mysqli($db_hostname, $db_username, $db_password, $db_database);
 
