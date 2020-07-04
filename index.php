@@ -25,11 +25,6 @@ if (isset($_GET['route'])){
 
 require_once "./page/$page.php";
 
-echo "<pre>";
-$records = getAllAdmins();
-var_dump($records);
-echo "</pre>";
-
 ?>
 <!-- end of content -->
 

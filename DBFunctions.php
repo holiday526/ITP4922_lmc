@@ -23,6 +23,12 @@ function get($query) {
     return $collection;
 }
 
+function dd($collection) {
+    echo "<pre>";
+    var_dump($collection);
+    echo "</pre>";
+}
+
 /** admins */
 function getAllAdmins() {
     $query = "SELECT * FROM `admins`";
