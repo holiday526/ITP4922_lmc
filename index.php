@@ -2,7 +2,10 @@
 <html lang="en">
 <?php require_once 'layout/head.php'; ?>
 <body>
-<?php require_once 'layout/navbar.php'; ?>
+<?php
+require_once 'CommonFunctions.php';
+require_once 'layout/navbar.php';
+?>
 <?php require_once 'layout/header.php'; ?>
 <?php
 if (isset($_GET['route'])){
@@ -16,8 +19,6 @@ if (isset($_GET['route'])){
 }
 
 require_once "./page/$page.php";
-
-require_once 'CommonFunctions.php';
 
 echo "<pre>";
 var_dump(getAllAdmins());
