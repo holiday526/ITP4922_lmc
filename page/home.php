@@ -1,4 +1,7 @@
 <!-- Page Content -->
+
+<?php require_once 'layout/header.php'; ?>
+
 <div class="container">
 
     <h1 class="my-4">Welcome to Modern Business</h1>

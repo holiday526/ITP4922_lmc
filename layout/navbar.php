@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">Auto Car Sales Ltd</a>
+        <a class="navbar-brand" href="/ITP4922_lmc">Auto Car Sales Ltd</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -10,6 +10,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">About Us</a>
                 </li>
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search something" aria-label="Search">
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                </form>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCarProduct" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Products
@@ -28,9 +32,9 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php
                             if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
-                                echo 'getAdminUserName';
+                                echo 'Hi,'.$_SESSION['admin_username'];
                             } else {
-                                echo 'getCustomerUserName';
+                                echo 'Hi,'.$_SESSION['customer_username'];
                             }
                         ?>
                     </a>
