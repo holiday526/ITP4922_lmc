@@ -38,13 +38,41 @@ function queryBuilderPrepare($table, $select_array, $where_array = [], $orderby_
     if (!empty($where_array)) {
         $first = true;
         foreach ($where_array as $key => $value) {
+            $temp_in_str = "";
+            $in_first = true;
+            if (is_array($value)) {
+                $temp_in_str = "(";
+                foreach ($value as $v) {
+                    if ($in_first) {
+                        $temp_in_str = $temp_in_str."?";
+                        $in_first = false;
+                    } else {
+                        $temp_in_str = $temp_in_str.",?";
+                    }
+                }
+                $temp_in_str = $temp_in_str.")";
+            }
             if ($first) {
-                $query = $query." WHERE $key = ?";
-                array_push($bind_array, $value);
+                if (is_array($value)) {
+                    $query = $query." WHERE $key IN $temp_in_str";
+                    foreach ($value as $v) {
+                        array_push($bind_array, $v);
+                    }
+                } else {
+                    $query = $query." WHERE $key = ?";
+                    array_push($bind_array, $value);
+                }
                 $first = false;
             } else {
-                $query = $query." AND $key = ?";
-                array_push($bind_array, $value);
+                if (is_array($value)) {
+                    $query = $query." AND $key IN $temp_in_str";
+                    foreach ($value as $v) {
+                        array_push($bind_array, $v);
+                    }
+                } else {
+                    $query = $query." AND $key = ?";
+                    array_push($bind_array, $value);
+                }
             }
         }
     }
