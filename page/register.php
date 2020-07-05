@@ -3,14 +3,12 @@
     <form action="" method="post">
         <div class="form-group">
             <label for="emailInput">Email address</label>
-            <input type="email" name="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Enter email">
+            <input type="email" name="email" class="form-control" id="emailInput" placeholder="Enter email">
         </div>
         <div class="form-group">
-            <label for="inputPassword">Password</label>
-            <input type="password" id="inputPassword" class="form-control mx-sm-3" aria-describedby="passwordHelpInline">
-            <small id="passwordHelpInline" class="text-muted">
-                Must be 8-20 characters long.
-            </small>
+            <label for="passwordInput">Password</label>
+            <input type="password" name="password" class="form-control" id="passwordInput" placeholder="Enter password" aria-describedby="passwordHelp" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$">
+            <small id="passwordHelp" class="form-text text-muted">Password Length must be 8 - 20 characters.</small>
         </div>
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="corporateCustomerCheckbox" name="corporateCustomer">
@@ -29,6 +27,5 @@
             <div class="col-4 mx-auto"><button type="submit" class="btn btn-success btn-md btn-block">Submit</button></div>
             <div class="col-4 mx-auto"><a href="?route=login" class="btn btn-primary btn-md btn-block">Login existing</a></div>
         </div>
-        
     </form>
 </div>

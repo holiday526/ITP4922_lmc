@@ -28,9 +28,9 @@ if ($page === "404") {
     echo "<div style='background: #6c757d'>";
     require_once "./page/$page.php";
     echo "</div>";
+} else {
+    require_once "./page/$page.php";
 }
-require_once "./page/$page.php";
-
 
 ?>
 <!-- end of content -->

@@ -1,7 +1,8 @@
 <div class="container">
 
 <?php
-dd(queryBuilderPrepare('admins', ['*'], ['id'=>'A000001']));
+dd(queryBuilderPrepare('appointments', ['*'], [], [], [['cars','cars.id', 'appointments.carId']]));
 ?>
+
 
 </div>

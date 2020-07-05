@@ -12,10 +12,11 @@ function getPdo() {
         'root',
         '2fi@Solutions'
     );
+
     return $dbh;
 }
 
-function queryBuilderPrepare($table, $select_array, $where_array = [], $orderby_array = []) {
+function queryBuilderPrepare($table, $select_array, $where_array = [], $orderby_array = [], $inner_join_array = []) {
 
     $selector = "";
     if ($select_array[0] == '*') {
@@ -32,9 +33,15 @@ function queryBuilderPrepare($table, $select_array, $where_array = [], $orderby_
         }
     }
 
-    $query = "SELECT $selector FROM $table";
-
     $bind_array = [];
+
+    $query = "SELECT $selector FROM $table";
+    if (!empty($inner_join_array)) {
+        foreach ($inner_join_array as $array) {
+            $query = $query." INNER JOIN $array[0] ON $array[1] = $array[2] ";
+        }
+    }
+
     if (!empty($where_array)) {
         $first = true;
         foreach ($where_array as $key => $value) {
@@ -94,6 +101,7 @@ function queryBuilderPrepare($table, $select_array, $where_array = [], $orderby_
     }
 
     $sth = getPdo()->prepare($query);
+
     if (!empty($bind_array)) {
         $sth->execute($bind_array);
     } else {
