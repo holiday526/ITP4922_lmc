@@ -113,34 +113,6 @@ function queryBuilder($table, $select_array = ['*'], $where_array = [], $orderby
     // TODO: this query
 }
 
-function test() {
-    $query = "SELECT * FROM `admins` ";
-    $id = 'id';
-    $arr = ['id'=>'A000001'];
-//    $query = $query." WHERE $id = ? ";
-    $stmt = getDbConn()->prepare($query);
-    $params_types = "";
-    foreach ($arr as $key => $value) {
-        switch (gettype($value)) {
-            case "string": $params_types = $params_types."s"; break;
-            case "integer": $params_types = $params_types."i"; break;
-            case "double": $params_types = $params_types."d"; break;
-            default: $params_types = $params_types."s"; break;
-        }
-    }
-//    $stmt->bind_param($params_types, $arr['id']);
-//    $stmt->execute();
-    if (!$stmt->execute()) {
-        echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-    }
-    $result = $stmt->get_result();
-    echo var_dump($result);
-    while ($row = $result->fetch_assoc()) {
-        echo var_dump($row);
-    }
-    $stmt->close();
-}
-
 function test2() {
     $dbh = new PDO(
         'mysql:host=192.168.1.100;dbname=autocardb;charset=utf8mb4',
@@ -162,14 +134,50 @@ function getPdo() {
     return $dbh;
 }
 
-function queryBuilderPrepare($table, $select_array, $where_array = [], $orderby_array) {
+function queryBuilderPrepare($table, $select_array, $where_array = [], $orderby_array = []) {
+
     $selector = "";
     if ($select_array[0] == '*') {
         $selector = "*";
+    } else {
+        $first = true;
+        foreach ($select_array as $value) {
+            if ($first) {
+                $selector = $value;
+                $first = false;
+            } else {
+                $selector = $selector.", $value";
+            }
+        }
     }
-    $query = "SELECT ";
+
+    $query = "SELECT $selector FROM $table";
+
+    $bind_array = [];
+    if (!empty($where_array)) {
+        $first = true;
+        foreach ($where_array as $key => $value) {
+            if ($first) {
+                $query = $query." WHERE $key = ?";
+                array_push($bind_array, $value);
+                $first = false;
+            } else {
+                $query = $query." AND $key = ?";
+                array_push($bind_array, $value);
+            }
+        }
+    }
+
+    $sth = getPdo()->prepare($query);
+    if (!empty($bind_array)) {
+        $sth->execute($bind_array);
+    } else {
+        $sth->execute();
+    }
+
+    return $sth->fetchAll();
 }
 
-function prepareWhere($query, $where_array ) {
+function prepareWhere($query, $where_array) {
 
 }

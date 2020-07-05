@@ -1,7 +1,7 @@
 <div class="container">
 
 <?php
-dd(test2());
+dd(queryBuilderPrepare('admins', ['*'], ['id'=>'A000001']));
 ?>
 
 </div>
