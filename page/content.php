@@ -1,11 +1,7 @@
-<!-- Page Content -->
 <div class="container">
 
 <?php
-
-dd(getAppointments());
-
+dd(test2());
 ?>
 
 </div>
-<!-- /.container -->
