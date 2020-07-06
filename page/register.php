@@ -10,6 +10,11 @@
             <input type="password" name="password" class="form-control" id="passwordInput" placeholder="Enter password" aria-describedby="passwordHelp" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$">
             <small id="passwordHelp" class="form-text text-muted">Password Length must be 8 - 20 characters.</small>
         </div>
+        <div class="form-group">
+            <label for="passwordInputConfirm">Confirm Password</label>
+            <input type="password" name="c_password" class="form-control" id="passwordInputConfirm" placeholder="Enter password" aria-describedby="passwordConfirmHelp" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$">
+            <small id="passwordConfirmHelp" class="form-text text-muted">Password Length must be 8 - 20 characters.</small>
+        </div>
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="corporateCustomerCheckbox" name="corporateCustomer">
             <label class="form-check-label" for="corporateCustomerCheckbox">Corporate Customer?</label>
