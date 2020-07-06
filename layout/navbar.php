@@ -45,7 +45,7 @@
                 </li>
                 <?php } else { ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sign In</a>
+                    <a class="nav-link" href="/?route=login">Sign In</a>
                 </li>
                 <?php } ?>
                 <!-- End of for auth users -->
