@@ -19,10 +19,10 @@
                         Products
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownCarProduct">
-                        <a class="dropdown-item" href="?route=content">All</a>
+                        <a class="dropdown-item" href="?route=catalog">All</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">New Cars</a>
-                        <a class="dropdown-item" href="#">2<sup>nd</sup> Hand Cars</a>
+                        <a class="dropdown-item" href="?route=catalog&type=new">New Cars</a>
+                        <a class="dropdown-item" href="?route=catalog&type=2nd">2<sup>nd</sup> Hand Cars</a>
                     </div>
                 </li>
                 <!-- End of normal users -->

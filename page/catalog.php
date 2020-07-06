@@ -1,5 +1,31 @@
 <?php
-$cars = queryBuilderPrepare('cars', ['cars.name as carName', 'customers.name as customerName', 'cars.id as carId', 'customers.id as customerId', 'cars.*'], [], [], [['customers', 'cars.ownerId', 'customers.id']]);
+$catalogString = '';
+if (isset($_GET['type'])) {
+    switch ($_GET['type']) {
+        case 'new':
+            $catalogString = 'New';
+            $catType = '0';
+            break;
+        case '2nd':
+            $catalogString = '2<sup>nd</sup> Hand Cars';
+            $catType = '1';
+            break;
+    }
+    $cars = queryBuilderPrepare(
+            'cars',
+            ['cars.name as carName', 'customers.name as customerName', 'cars.id as carId', 'customers.id as customerId', 'cars.*'],
+            ['oldCar'=>$catType],
+            [],
+            [['customers', 'cars.ownerId', 'customers.id']]
+    );
+} else {
+    $catalogString = 'All';
+    $cars = queryBuilderPrepare('cars',
+        ['cars.name as carName', 'customers.name as customerName', 'cars.id as carId', 'customers.id as customerId', 'cars.*'],
+        [],
+        [],
+        [['customers', 'cars.ownerId', 'customers.id']]);
+}
 //dd($cars);
 ?>
 
@@ -8,7 +34,8 @@ $cars = queryBuilderPrepare('cars', ['cars.name as carName', 'customers.name as 
 
     <!-- Page Heading/Breadcrumbs -->
     <h1 class="mt-4 mb-3">Catalog
-        <small></small>
+        <small><?= $catalogString?></small>
+
     </h1>
 
     <!--    <ol class="breadcrumb">-->
