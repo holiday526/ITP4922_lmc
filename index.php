@@ -20,6 +20,7 @@ if (isset($_GET['route'])){
         case 'content': $page = 'content'; break;
         case 'compare': $page = 'compare'; break;
         case 'catalog': $page = 'catalog'; break;
+        case 'user_profile': $page = 'user_profile'; break;
         default: $page = "404";
     }
 } else {
