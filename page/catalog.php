@@ -1,5 +1,6 @@
 <?php
 session_start();
+//dd($_SESSION['customer']['id']);
 
 if (isset($_GET['addcompare'])) {
     if (count(array_filter($_SESSION['compareList'])) < 4) {
@@ -207,17 +208,17 @@ if (isset($_GET['carId'])) {
                         <div class="col-6">
                             <h2 class="card-title"><?= $car['carName'] ?></h2>
                             <p class="card-text"><?= $car['description'] ?></p>
-                            <div class="d-flex flex-row py-1">
-                                <a href="<?= $carUrl ?>" class="btn btn-primary d-flex">Read More &rarr;</a>
+                            <div class="row py-1 justify-content-around">
+                                <a href="<?= $carUrl ?>" class="btn btn-primary col-5">Read More &rarr;</a>
                                 <?php if (in_array($car['carId'], $_SESSION['compareList'])) { ?>
-                                    <a class="btn btn-success d-flex px-2" href="/?route=catalog&delcompare=<?= $car['carId'] ?>">Remove from compare</a>
+                                    <a class="btn btn-danger px-2 col-5" href="/?route=catalog&delcompare=<?= $car['carId'] ?>">Remove compare</a>
                                 <?php } else { ?>
-                                    <a class="btn btn-success d-flex px-2" href="/?route=catalog&addcompare=<?= $car['carId'] ?>">Add to compare</a>
+                                    <a class="btn btn-success px-2 col-5" href="/?route=catalog&addcompare=<?= $car['carId'] ?>">Add to compare</a>
                                 <?php } ?>
                             </div>
-                            <div class="d-flex flex-row pt-1">
-                                <a href="<?= $carUrl ?>" class="btn btn-primary d-flex px-2">Make appointment</a>
-                                <a href="<?= $carUrl ?>" class="btn btn-primary d-flex px-2">Order Now!</a>
+                            <div class="row py-1 justify-content-around">
+                                <a href="/?route=makeAppointment&carId=<?=$car['carId']?>" class="btn btn-info px-2 col-5">Make appointment</a>
+                                <a href="<?= $carUrl ?>" class="btn btn-success px-2 col-5">Order Now!</a>
                             </div>
                         </div>
                     </div>
