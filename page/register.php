@@ -4,17 +4,17 @@ session_start();
 
 <?php
 if (!empty($_SESSION['ERROR_REGISTER'])) {
-    ?>
+?>
     <script>
         $(document).ready(function(){
-            $("#exampleModal").modal('show');
+            $("#registerModal").modal('show');
         });
     </script>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="registerModalLabel">Modal title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -31,6 +31,15 @@ if (!empty($_SESSION['ERROR_REGISTER'])) {
             </div>
         </div>
     </div>
+<?php
+}
+
+if (isset($_SESSION['customer']) || isset($_SESSION['admin'])) {
+?>
+    <script>
+        // Authed, redirect back to home page
+        window.location.replace(window.location.origin + '/');
+    </script>
 <?php } ?>
 
 <div class="container mt-4">

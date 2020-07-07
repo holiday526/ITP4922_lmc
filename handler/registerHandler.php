@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $temp_str .= $phone;
                 $first = false;
             } else {
-                $temp_str .= $phone;
+                $temp_str .= ",".$phone;
             }
         }
         $phone = $temp_str;
@@ -76,9 +76,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ['id','email','uid','password','name','corporateCustomer','address','contactPhones'],
         [$id, $_POST['email'], $_POST['uid'], md5($_POST['password']), $_POST['customerName'], $corporate_customer, $_POST['address'], $phone]
     );
+    unset($_SESSION["ERROR_REGISTER"]);
 ?>
     <script>
-        alert('Welcome to Auto Car Sales Ltd.');
+        alert('Register success');
         window.location.replace(window.location.origin + '/?route=login');
     </script>
 <?php
