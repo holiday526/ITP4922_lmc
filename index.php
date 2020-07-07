@@ -22,7 +22,7 @@ if (isset($_GET['route'])){
         case 'catalog': $page = 'catalog'; break;
         case 'sell': $page = 'sell'; break;
         case 'user_profile': $page = 'user_profile'; break;
-        case 'makeAppointments': $page = 'makeAppointments'; break;
+        case 'makeAppointment': $page = 'makeAppointment'; break;
         default: $page = "404";
     }
 } else {
