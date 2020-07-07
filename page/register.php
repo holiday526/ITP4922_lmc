@@ -1,6 +1,34 @@
+<?php
+session_start();
+?>
+
+<?php
+//if (!empty($_SESSION['ERROR_REGISTER'])) {
+//    ?>
+<!--    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"-->
+<!--         aria-hidden="true">-->
+<!--        <div class="modal-dialog" role="document">-->
+<!--            <div class="modal-content">-->
+<!--                <div class="modal-header">-->
+<!--                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
+<!--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                        <span aria-hidden="true">&times;</span>-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                    ...-->
+<!--                </div>-->
+<!--                <div class="modal-footer">-->
+<!--                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<?php //} ?>
+
 <div class="container mt-4">
     <h4>Customer Register</h4>
-    <form action="../handler/registerHandler.php" method="post">
+    <form action="../handler/registerHandler.php" method="POST">
         <div class="form-group">
             <label for="emailInput">Email address</label>
             <input type="email" name="email" class="form-control" id="emailInput" placeholder="Enter email" required>
@@ -8,18 +36,21 @@
         <div class="form-group">
             <label for="userIdInput">User ID</label>
             <input type="text" name="uid" class="form-control" id="userIdInput" placeholder="Enter User ID for login"
-                   pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{6,16}$">
+                   pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{5,15}$">
             <small id="passwordHelp" class="form-text text-muted">User ID Length must be 6 - 16 characters.</small>
         </div>
         <div class="form-group">
             <label for="passwordInput">Password</label>
-            <input type="password" name="password" class="form-control" id="passwordInput" placeholder="Enter password" aria-describedby="passwordHelp" required>
+            <input type="password" name="password" class="form-control" id="passwordInput" placeholder="Enter password"
+                   aria-describedby="passwordHelp" required>
             <small id="passwordHelp" class="form-text text-muted">Password Length must be 8 - 20 characters.</small>
         </div>
         <div class="form-group">
             <label for="passwordInputConfirm">Confirm Password</label>
-            <input type="password" name="c_password" class="form-control" id="passwordInputConfirm" placeholder="Repeat password" aria-describedby="passwordConfirmHelp" required>
-            <small id="passwordConfirmHelp" class="form-text text-muted">Password Length must be 8 - 20 characters.</small>
+            <input type="password" name="c_password" class="form-control" id="passwordInputConfirm"
+                   placeholder="Repeat password" aria-describedby="passwordConfirmHelp" required>
+            <small id="passwordConfirmHelp" class="form-text text-muted">Password Length must be 8 - 20
+                characters.</small>
         </div>
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="corporateCustomerCheckbox" name="corporateCustomer">
@@ -32,27 +63,25 @@
         <div class="form-group">
             <label for="contactPhones">Contact Phones</label>
             <div class="input-group mb-2">
-                <input type="text" class="form-control" placeholder="Phone No." name="contactPhones[]" id="contactPhones" required>
+                <input type="text" class="form-control" placeholder="Phone No." name="contactPhones[]"
+                       id="contactPhones" required>
                 <div class="input-group-append">
                     <button class="btn btn-secondary" type="button" onclick="createNewContactPhoneInput()">+</button>
                 </div>
             </div>
             <div id="newPhoneContactInput"></div>
         </div>
-
         <div class="form-group form-row">
             <div class="col-4 mx-auto">
-                <button type="submit" class="btn btn-success btn-md btn-block">Submit</button>
+                <input type="submit" class="btn btn-success btn-md btn-block">
             </div>
-            <div class="col-4 mx-auto"><a href="?route=login" class="btn btn-primary btn-md btn-block">Login
-                    existing</a></div>
-
-        <div class="form-group form-row mt-4">
-            <div class="col-4 mx-auto"><button type="submit" class="btn btn-success btn-md btn-block">Submit</button></div>
-            <div class="col-4 mx-auto"><a href="?route=login" class="btn btn-primary btn-md btn-block">Login existing</a></div>
+            <div class="col-4 mx-auto">
+                <a href="?route=login" class="btn btn-primary btn-md btn-block">Login existing</a>
+            </div>
         </div>
     </form>
 </div>
+
 <script>
     let emailObj = document.getElementById('emailInput');
     let passwordObj = document.getElementById('passwordInput');
@@ -62,7 +91,7 @@
     let address = document.getElementById('addressTextArea');
     let contactPhones = document.getElementById('contactPhones');
 
-    passwordObj.addEventListener("input", function(event) {
+    passwordObj.addEventListener("input", function (event) {
         if (checkPassword(passwordObj.value)) {
             passwordObj.classList.remove('is-invalid');
             passwordHelpMessage.classList.remove('text-danger');
@@ -74,7 +103,7 @@
         }
     });
 
-    cPasswordObj.addEventListener("input", function(event) {
+    cPasswordObj.addEventListener("input", function (event) {
         if (passwordObj.value === cPasswordObj.value) {
             cPasswordObj.classList.remove('is-invalid');
             cPasswordHelpMessage.classList.remove('text-danger');
@@ -88,7 +117,7 @@
 
     function checkPassword(inputPw) {
         let pwRegex = /^[A-Za-z0-9]\w{7,20}$/;
-        if(inputPw.match(pwRegex)) {
+        if (inputPw.match(pwRegex)) {
             return true;
         } else {
             return false;
@@ -110,6 +139,7 @@
         }
 
     }
+
     function createNewContactPhoneInput() {
         let txtNewInputBox = document.createElement('div');
         txtNewInputBox.innerHTML = "<div class='py-2'><input type='text' id='newInputBox' class='form-control' placeholder='Phone No.' name='contactPhones[]' required></div>";
