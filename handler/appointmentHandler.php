@@ -1,13 +1,11 @@
 <?php
 session_start();
-include 'DBFunctions.php/';
-
-var_dump($_POST);
+require_once '../DBFunctions.php';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (isset($_POST['action'])){
-        die("i m drunk");
-        var_dump((insertPrepare('appointments',
+//        die("i m drunk");
+        dd(insertPrepare('appointments',
             ['carId', 'appointmentUserId'],
             [$_POST['carId'], $_SESSION['customer']['id']]
         ));

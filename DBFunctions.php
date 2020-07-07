@@ -154,6 +154,8 @@ function insertPrepare($table, $column_array = [], $value_array = []) {
         $query .= ")";
     }
 
+//    return ['query'=>$query, 'array'=>$bind_array];
+
     $sth = getPdo()->prepare($query);
 
     return !empty($bind_array) ? $sth->execute($bind_array) : $sth->execute(); // return true or false
