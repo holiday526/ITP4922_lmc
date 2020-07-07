@@ -20,13 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a6f89236-5c84-4919-8178-85b92520c43e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/handler/registerHander.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DBFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/DBFunctions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/layout/head.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/layout/navbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/content.php" beforeDir="false" afterPath="$PROJECT_DIR$/page/content.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/page/register.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,23 +29,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ComposerSettings">
-    <execution>
-      <executable />
-    </execution>
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -80,10 +59,10 @@
     <property name="settings.editor.selected.configurable" value="inlay.hints.PHP" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\ITP4922_lmc" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\ITP4922_lmc" />
     </key>
   </component>
@@ -103,6 +82,21 @@
       <workItem from="1594017180389" duration="13497000" />
       <workItem from="1594117313773" duration="309000" />
     </task>
+    <task id="LOCAL-00001" summary="Update Navbar&#10;Add compare route button">
+      <created>1594122415891</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1594122415891</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Update compare catalog&#10;Add compare route button">
+      <created>1594122475501</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1594122475501</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,13 +107,17 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update Navbar&#10;Add compare route button" />
+    <MESSAGE value="Update compare catalog&#10;Add compare route button" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update compare catalog&#10;Add compare route button" />
   </component>
   <component name="WindowStateProjectService">
     <state x="696" y="473" key="NewPhpFileDialog" timestamp="1594023016782">
@@ -131,6 +129,10 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="341" y="175" key="SettingsEditor/1680.99.1024.745/0.23.1680.1027@0.23.1680.1027" timestamp="1594026401746" />
+    <state x="320" y="201" key="Vcs.Push.Dialog.v2" timestamp="1594122418055">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="320" y="201" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1594122418055" />
     <state x="809" y="1537" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1594117389296">
       <screen x="306" y="1175" width="1440" height="877" />
     </state>
