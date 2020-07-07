@@ -16,3 +16,4 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/4b9ba14b0f.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/2.0.2/sha.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>

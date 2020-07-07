@@ -16,7 +16,7 @@ function getPdo() {
     return $dbh;
 }
 
-function queryBuilderPrepare($table, $select_array, $where_array = [], $orderby_array = [], $inner_join_array = []) {
+function queryBuilderPrepare($table, $select_array, $where_array = [], $orderby_array = [], $inner_join_array = [], $limit = -1) {
 
     $selector = "";
     if ($select_array[0] == '*') {
@@ -88,17 +88,19 @@ function queryBuilderPrepare($table, $select_array, $where_array = [], $orderby_
         $first = true;
         foreach ($orderby_array as $key => $value) {
             if ($first) {
-                $query = $query." ORDER BY ? ?";
-                array_push($bind_array, $key);
-                array_push($bind_array, $value);
+                $query = $query." ORDER BY $key $value";
                 $first = false;
             } else {
-                $query = $query." AND ? ?";
-                array_push($bind_array, $key);
-                array_push($bind_array, $value);
+                $query = $query." AND $key $value";
             }
         }
     }
+
+    if (!($limit <= 0)) {
+        $query .= " LIMIT $limit ";
+    }
+
+//    return ["query"=>$query, "array"=>$bind_array];
 
     $sth = getPdo()->prepare($query);
 
@@ -119,16 +121,15 @@ function insertPrepare($table, $column_array = [], $value_array = []) {
 
     if (isset($column_array)) {
         $first = true;
-
         $query .= "(";
         foreach ($column_array as $column) {
             if ($first) {
-                $query .= "?";
-                array_push($bind_array, $column);
+                $query .= "$column";
+//                array_push($bind_array, $column);
                 $first = false;
             } else {
-                $query .= ",?";
-                array_push($bind_array, $column);
+                $query .= ",$column";
+//                array_push($bind_array, $column);
             }
         }
         $query .= ")";
@@ -140,18 +141,19 @@ function insertPrepare($table, $column_array = [], $value_array = []) {
         $first = true;
 
         $query .= "(";
-        foreach ($column_array as $column) {
+        foreach ($value_array as $column) {
             if ($first) {
                 $query .= "?";
                 array_push($bind_array, $column);
                 $first = false;
             } else {
-                $query .= ",?";
+                $query .= ", ?";
                 array_push($bind_array, $column);
             }
         }
         $query .= ")";
     }
+
 
     $sth = getPdo()->prepare($query);
 
