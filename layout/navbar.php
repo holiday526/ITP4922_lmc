@@ -38,8 +38,16 @@
                 <!-- End of normal users -->
                 <!-- For auth users -->
                 <?php if(isset($_SESSION['customer']) || isset($_SESSION['admin'])) { ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="/?route=sell">Sell a car</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownYourCar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Your car
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownYourCar">
+                        <a class="dropdown-item" href="?route=sell&type=create">Sell a car</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="?route=sell&type=show">My selling car</a>
+                        <a class="dropdown-item" href="?route=sell&type=appointent">My appointment</a>
+                    </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

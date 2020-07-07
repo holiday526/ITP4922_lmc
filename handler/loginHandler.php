@@ -24,7 +24,7 @@ if (!empty($temp_user)) {
         unset($_SESSION['ERROR']['LOGIN']);
     }
 } else {
-    $_SESSION['ERROR'] = ["LOGIN" => "No User Name"];
+    $_SESSION['ERROR'] = ["LOGIN" => "User ID not found"];
 }
 
 if (empty($_SESSION['ERROR']["LOGIN"])) {
