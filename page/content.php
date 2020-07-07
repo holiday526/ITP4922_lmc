@@ -4,5 +4,4 @@
 dd(queryBuilderPrepare('appointments', ['*'], [], [], [['cars','cars.id', 'appointments.carId']]));
 ?>
 
-
 </div>

@@ -10,10 +10,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">About Us</a>
                 </li>
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search something" aria-label="Search">
-                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                <li class="nav-item">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCarProduct" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Products
