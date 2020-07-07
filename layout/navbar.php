@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
         <a class="navbar-brand" href="/">Auto Car Sales Ltd</a>
@@ -36,23 +37,23 @@
                 </li>
                 <!-- End of normal users -->
                 <!-- For auth users -->
-                <?php if(false) { ?>
+                <?php if(isset($_SESSION['customer']) || isset($_SESSION['admin'])) { ?>
                 <li class="nav-item">
                     <a class="nav-link" href="/?route=sell">Sell a car</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php
-                            if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
-                                echo 'Hi,'.$_SESSION['admin_username'];
-                            } else {
-                                echo 'Hi,'.$_SESSION['customer_username'];
+                            if (isset($_SESSION['admin']) && $_SESSION['admin']) {
+                                echo 'Hi,'.$_SESSION['username'];
+                            } else if (isset($_SESSION['customer']) && $_SESSION['customer']) {
+                                echo 'Hi, '.$_SESSION['customer']["name"];
                             }
                         ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownUser">
                         <a class="dropdown-item" href="#">Profile</a>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="../logout.php">Logout</a>
                     </div>
                 </li>
                 <?php } else { ?>
