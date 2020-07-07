@@ -110,3 +110,50 @@ function queryBuilderPrepare($table, $select_array, $where_array = [], $orderby_
 
     return $sth->fetchAll();
 }
+
+function insertPrepare($table, $column_array = [], $value_array = []) {
+
+    $query = "INSERT INTO $table ";
+
+    $bind_array = [];
+
+    if (isset($column_array)) {
+        $first = true;
+
+        $query .= "(";
+        foreach ($column_array as $column) {
+            if ($first) {
+                $query .= "?";
+                array_push($bind_array, $column);
+                $first = false;
+            } else {
+                $query .= ",?";
+                array_push($bind_array, $column);
+            }
+        }
+        $query .= ")";
+    }
+
+    $query .= " VALUES ";
+
+    if (isset($value_array)) {
+        $first = true;
+
+        $query .= "(";
+        foreach ($column_array as $column) {
+            if ($first) {
+                $query .= "?";
+                array_push($bind_array, $column);
+                $first = false;
+            } else {
+                $query .= ",?";
+                array_push($bind_array, $column);
+            }
+        }
+        $query .= ")";
+    }
+
+    $sth = getPdo()->prepare($query);
+
+    return !empty($bind_array) ? $sth->execute($bind_array) : $sth->execute(); // return true or false
+}
