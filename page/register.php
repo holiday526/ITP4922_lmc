@@ -52,12 +52,12 @@ if (isset($_SESSION['customer']) || isset($_SESSION['admin'])) {
         <div class="form-group">
             <label for="userIdInput">User ID</label>
             <input type="text" name="uid" class="form-control" id="userIdInput" placeholder="Enter User ID for login"
-                   pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{5,15}$">
+                   pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{5,15}$" required>
             <small id="passwordHelp" class="form-text text-muted">User ID Length must be 6 - 16 characters.</small>
         </div>
         <div class="form-group">
             <label for="customerNameInput">Customer Name</label>
-            <input type="text" name="customerName" class="form-control" id="customerNameInput" placeholder="Enter your name">
+            <input type="text" name="customerName" class="form-control" id="customerNameInput" placeholder="Enter your name" required>
         </div>
         <div class="form-group">
             <label for="passwordInput">Password</label>
@@ -93,7 +93,7 @@ if (isset($_SESSION['customer']) || isset($_SESSION['admin'])) {
         </div>
         <div class="form-group form-row">
             <div class="col-4 mx-auto">
-                <input type="submit" class="btn btn-success btn-md btn-block">
+                <input type="submit" class="btn btn-success btn-block">
             </div>
             <div class="col-4 mx-auto">
                 <a href="?route=login" class="btn btn-primary btn-md btn-block">Login existing</a>

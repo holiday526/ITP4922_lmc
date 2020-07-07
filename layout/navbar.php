@@ -46,7 +46,7 @@
                         <a class="dropdown-item" href="?route=sell&type=create">Sell a car</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="?route=sell&type=show">My selling car</a>
-                        <a class="dropdown-item" href="?route=sell&type=appointent">My appointment</a>
+                        <a class="dropdown-item" href="?route=sell&type=appointment">My appointment</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
