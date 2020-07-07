@@ -5,18 +5,12 @@
                 <div class="card-header">Customer Login</div>
 
                 <div class="card-body">
-                    <form method="POST" action="">
+                    <form method="POST" action="../handler/loginHandler.php">
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">Email Address</label>
+                            <label for="uid" class="col-md-4 col-form-label text-md-right">User ID</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="" required autofocus>
-
-                                <?php if (false) { ?>
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>Message</strong>
-                                </span>
-                                <?php } ?>
+                                <input id="uid" type="email" class="form-control" name="uid" value="" required autofocus>
                             </div>
                         </div>
 

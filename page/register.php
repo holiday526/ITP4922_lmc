@@ -3,28 +3,35 @@ session_start();
 ?>
 
 <?php
-//if (!empty($_SESSION['ERROR_REGISTER'])) {
-//    ?>
-<!--    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"-->
-<!--         aria-hidden="true">-->
-<!--        <div class="modal-dialog" role="document">-->
-<!--            <div class="modal-content">-->
-<!--                <div class="modal-header">-->
-<!--                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
-<!--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--                        <span aria-hidden="true">&times;</span>-->
-<!--                    </button>-->
-<!--                </div>-->
-<!--                <div class="modal-body">-->
-<!--                    ...-->
-<!--                </div>-->
-<!--                <div class="modal-footer">-->
-<!--                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<?php //} ?>
+if (!empty($_SESSION['ERROR_REGISTER'])) {
+    ?>
+    <script>
+        $(document).ready(function(){
+            $("#exampleModal").modal('show');
+        });
+    </script>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-danger">Register Failed</p>
+                    <?php foreach ($_SESSION['ERROR_REGISTER'] as $error_key => $error_value) { ?>
+                    <p><?= $error_value ?></p>
+                    <?php } ?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
 
 <div class="container mt-4">
     <h4>Customer Register</h4>
@@ -38,6 +45,10 @@ session_start();
             <input type="text" name="uid" class="form-control" id="userIdInput" placeholder="Enter User ID for login"
                    pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{5,15}$">
             <small id="passwordHelp" class="form-text text-muted">User ID Length must be 6 - 16 characters.</small>
+        </div>
+        <div class="form-group">
+            <label for="customerNameInput">Customer Name</label>
+            <input type="text" name="customerName" class="form-control" id="customerNameInput" placeholder="Enter your name">
         </div>
         <div class="form-group">
             <label for="passwordInput">Password</label>
