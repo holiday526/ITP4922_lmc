@@ -49,7 +49,9 @@ if (isset($_GET['carId'])) {
             </div>
         </div>
         <div class="card-footer">
-            <form action="../handler/appointmentHandler.php?action=make&carId=<?=$car['carId']?>" method="post">
+            <form action="../handler/appointmentHandler.php" method="post">
+                <input type="hidden" name="action" value="make">
+                <input type="hidden" name="carId" value="<?=$car['carId']?>">
                 <button class="btn btn-danger">Confirm book appointment</button>
             </form>
         </div>
