@@ -23,7 +23,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/?route=compare">Compare model</a>
                 </li>
-                <form class="form-inline">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCarProduct" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Products
@@ -38,6 +37,9 @@
                 <!-- End of normal users -->
                 <!-- For auth users -->
                 <?php if(false) { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="/?route=sell">Sell a car</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php

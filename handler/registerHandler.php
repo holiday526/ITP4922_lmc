@@ -9,8 +9,6 @@ $customer_username = queryBuilderPrepare('customers', ['*'], ['uid'=>$_POST['uid
 dd($customer_email);
 dd($customer_username);
 
-echo $_SERVER["REQUEST_METHOD"];
-
 ?>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
