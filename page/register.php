@@ -1,6 +1,6 @@
 <div class="container mt-4">
     <h4>Customer Register</h4>
-    <form action="../handler/registerHander.php" method="post">
+    <form action="../handler/registerHandler.php" method="post">
         <div class="form-group">
             <label for="emailInput">Email address</label>
             <input type="email" name="email" class="form-control" id="emailInput" placeholder="Enter email" required>
@@ -48,7 +48,7 @@
                     existing</a></div>
 
         <div class="form-group form-row mt-4">
-            <div class="col-4 mx-auto"><button onclick="hashPassword(this)" type="submit" class="btn btn-success btn-md btn-block">Submit</button></div>
+            <div class="col-4 mx-auto"><button type="submit" class="btn btn-success btn-md btn-block">Submit</button></div>
             <div class="col-4 mx-auto"><a href="?route=login" class="btn btn-primary btn-md btn-block">Login existing</a></div>
         </div>
     </form>
