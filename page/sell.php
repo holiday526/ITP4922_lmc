@@ -70,17 +70,58 @@ if ($auth) {
         // show all sells
 ?>
         <div class="container">
-            <h4 class="pt-2">Your selling cars</h4>
             <?php $selling_cars = queryBuilderPrepare(
                     'cars',
                 '*',
                 ['ownerId'=>$_SESSION['customer']['id']],
                 ['created_at'=>'desc']
             );
-            dd($selling_cars); ?>
-            <div class="card">
-                
-            </div>
+//            dd($selling_cars); ?>
+            <h1 class="mt-4 mb-3">Your selling cars
+                <small>count: <?= count($selling_cars) ?></small>
+            </h1>
+            <?php
+            $first = true;
+            foreach ($selling_cars as $selling_car) {
+                if ($first) {
+            ?>
+                    <div class="row my-2">
+                        <div class="col-md-7">
+                            <a href="#">
+                                <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
+                            </a>
+                        </div>
+                        <div class="col-md-5">
+                            <h3>Project One</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+                            <a class="btn btn-primary" href="#">View Project
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </div>
+                    </div>
+            <?php
+                    $first = false;
+                } else {
+            ?>
+                    <hr>
+                    <div class="row my-2">
+                        <div class="col-md-7">
+                            <a href="#">
+                                <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
+                            </a>
+                        </div>
+                        <div class="col-md-5">
+                            <h3>Project One</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+                            <a class="btn btn-primary" href="#">View Project
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </div>
+                    </div>
+            <?php
+                }
+            }
+            ?>
         </div>
 <?php
 ?>
