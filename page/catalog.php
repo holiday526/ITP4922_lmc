@@ -203,7 +203,13 @@ if (isset($_GET['carId'])) {
                             <div class="row py-1 justify-content-around">
                                 <a href="/?route=makeAppointment&carId=<?= $car['carId'] ?>"
                                    class="btn btn-info px-2 col-5">Make appointment</a>
-                                <a href="/?route=order&carId=<?=$car['carId']?>" class="btn btn-success px-2 col-5">Order Now!</a>
+                                <?php if ($car['bid'] == false) { ?>
+                                    <a href="/?route=order&carId=<?= $car['carId'] ?>"
+                                       class="btn btn-success px-2 col-5">Order Now!</a>
+                                <?php } elseif ($car['bid'] == true) { ?>
+                                    <a href="/?route=bid&carId=<?= $car['carId'] ?>" class="btn btn-warning px-2 col-5">Bid
+                                        Now!</a>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
