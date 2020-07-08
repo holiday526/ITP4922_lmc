@@ -14,6 +14,7 @@ require_once 'layout/navbar.php';
 if (isset($_GET['route'])){
     $route = $_GET['route'];
     switch ($route) {
+        case 'admin': $page = 'adminLogin'; break;
         case 'login': $page = 'login'; break;
         case 'register': $page = 'register'; break;
         case 'cart': $page = 'cart'; break;
@@ -21,6 +22,7 @@ if (isset($_GET['route'])){
         case 'compare': $page = 'compare'; break;
         case 'catalog': $page = 'catalog'; break;
         case 'sell': $page = 'sell'; break;
+        case 'update': $page = 'updateSellAd'; break;
         case 'user_profile': $page = 'user_profile'; break;
         case 'makeAppointment': $page = 'makeAppointment'; break;
         default: $page = "404";

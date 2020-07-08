@@ -23,15 +23,19 @@ if ($auth) {
             <input type="file" class="form-control-file" id="carPhotoFile" name="carPhoto">
         </div>
         <div class="form-group">
-            <label for="retailPriceInput">Retail Price</label>
+            <label for="retailPriceInput">Start bid</label>
             <input type="number" name="retailPrice" class="form-control" id="retailPriceInput"  min="0" required>
         </div>
         <div class="form-group">
-            <label for="productCostInput">Retail Price</label>
+            <label for="productCostInput">Product Cost</label>
             <input type="number" name="productCost" class="form-control" id="productCostInput"  min="0" required>
         </div>
         <input type="hidden" name="oldCar" value="1">
+        <?php if ($_SESSION['customer']) { ?>
         <input type="hidden" name="ownerId" value="<?= $_SESSION['customer']['id'] ?>">
+        <?php } else if ($_SESSION['admin']) { ?>
+        <input type="hidden" name="ownerId" value="<?= $_SESSION['admin']['id'] ?>">
+        <?php } ?>
         <input type="hidden" name="sold" value="0">
         <div class="form-group">
             <label for="brandNameInput">Brand Name</label>
@@ -52,7 +56,7 @@ if ($auth) {
         <div class="form-group">
             <label for="fuelTypeSelect">Fuel Types</label>
             <?php $fuel_types = queryBuilderPrepare('fuel_types', ['*']) ?>
-            <select class="form-control" id="fuelTypeSelect">
+            <select class="form-control" id="fuelTypeSelect" name="fuel_typesId">
                 <?php foreach ($fuel_types as $record) { ?>
                     <option value="<?= $record['id'] ?>"><?=$record['name']?></option>
                 <?php } ?>
@@ -70,12 +74,22 @@ if ($auth) {
         // show all sells
 ?>
         <div class="container">
-            <?php $selling_cars = queryBuilderPrepare(
+            <?php
+            if ($_SESSION['customer']) {
+                $selling_cars = queryBuilderPrepare(
+                        'cars',
+                    '*',
+                    ['ownerId'=>$_SESSION['customer']['id']],
+                    ['created_at'=>'desc']
+                );
+            } else if ($_SESSION['admin']) {
+                $selling_cars = queryBuilderPrepare(
                     'cars',
-                '*',
-                ['ownerId'=>$_SESSION['customer']['id']],
-                ['created_at'=>'desc']
-            );
+                    '*',
+                    ['ownerId'=>$_SESSION['admin']['id']],
+                    ['created_at'=>'desc']
+                );
+            }
 //            dd($selling_cars); ?>
             <h1 class="mt-4 mb-3">Your selling cars
                 <small>count: <?= count($selling_cars) ?></small>
@@ -83,18 +97,24 @@ if ($auth) {
             <?php
             $first = true;
             foreach ($selling_cars as $selling_car) {
+//                dd($selling_car);
                 if ($first) {
             ?>
                     <div class="row my-2">
                         <div class="col-md-7">
-                            <a href="#">
-                                <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
-                            </a>
+                            <div class="card">
+                                <img class="card-img rounded mb-3 mb-md-0" src="<?= $selling_car['photoLocation'] ?>" alt="">
+                                <?php if ($selling_car['sold']) { ?>
+                                <div class="card-img-overlay text-black-50 d-flex justify-content-center align-items-end"><p>Sold</p></div>
+                                <?php } ?>
+                            </div>
                         </div>
                         <div class="col-md-5">
-                            <h3>Project One</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
-                            <a class="btn btn-primary" href="#">View Project
+                            <h3><?= $selling_car['name'] ?></h3>
+                            <p>Description: <?= $selling_car['description'] ?></p>
+                            <p>Product Cost: $<?= $selling_car['productCost'] ?></p>
+                            <p>Current Price: $<?= $selling_car['retailPrice'] ?></p>
+                            <a class="btn btn-primary" href="/?route=update&carId=<?= $selling_car['id'] ?>">Update selling cars
                                 <span class="glyphicon glyphicon-chevron-right"></span>
                             </a>
                         </div>
@@ -106,14 +126,19 @@ if ($auth) {
                     <hr>
                     <div class="row my-2">
                         <div class="col-md-7">
-                            <a href="#">
-                                <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
-                            </a>
+                            <div class="card">
+                                <img class="card-img rounded mb-3 mb-md-0" src="<?= $selling_car['photoLocation'] ?>" alt="">
+                                <?php if ($selling_car['sold']) { ?>
+                                    <div class="card-img-overlay text-black-50 d-flex justify-content-center align-items-end"><p>Sold</p></div>
+                                <?php } ?>
+                            </div>
                         </div>
                         <div class="col-md-5">
-                            <h3>Project One</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
-                            <a class="btn btn-primary" href="#">View Project
+                            <h3><?= $selling_car['name'] ?></h3>
+                            <p><?= $selling_car['description'] ?></p>
+                            <p>Product Cost: $<?= $selling_car['productCost'] ?></p>
+                            <p>Current Price: $<?= $selling_car['retailPrice'] ?></p>
+                            <a class="btn btn-primary" href="/?route=update&carId=<?= $selling_car['id'] ?>">Update selling cars
                                 <span class="glyphicon glyphicon-chevron-right"></span>
                             </a>
                         </div>

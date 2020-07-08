@@ -1,7 +1,7 @@
 <div class="container">
 
 <?php
-dd(queryBuilderPrepare('fuel_types', ['*']));
+dd(queryBuilderPrepare('admins', ['*']));
 ?>
 
 </div>

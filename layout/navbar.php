@@ -53,7 +53,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php
                             if (isset($_SESSION['admin']) && $_SESSION['admin']) {
-                                echo 'Hi,'.$_SESSION['username'];
+                                echo 'Hi, '.$_SESSION['admin']['username'];
                             } else if (isset($_SESSION['customer']) && $_SESSION['customer']) {
                                 echo 'Hi, '.$_SESSION['customer']["name"];
                             }
