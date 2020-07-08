@@ -6,7 +6,6 @@ if (isset($_GET['addcompare'])) {
     if (count(array_filter($_SESSION['compareList'])) < 4) {
         if (!in_array($_GET['addcompare'], $_SESSION['compareList'])) {
             $_SESSION['compareList'][] = $_GET['addcompare'];
-            dd($_SESSION);
         }
     }
     header('Location: ' . $_SERVER['HTTP_REFERER'] . '#car' . $_GET['addcompare']);
@@ -15,7 +14,6 @@ if (isset($_GET['addcompare'])) {
         if (($key = array_search($_GET['delcompare'], $_SESSION['compareList'])) !== false) {
             unset($_SESSION['compareList'][$key]);
         }
-        dd($_SESSION);
     }
     header('Location: ' . $_SERVER['HTTP_REFERER'] . '#car' . $_GET['delcompare']);
 }
@@ -24,16 +22,12 @@ if (isset($_GET['carId'])) {
 //    Show the queried car (single car)
     $car = queryBuilderPrepare('cars',
         ['*'],
-//        ['cars.name as carName', 'customers.name as customerName', 'cars.id as carId'],
         ['cars.id' => $_GET['carId']],
-//        ['cars.id' => 1],
         [],
         [['customers', 'cars.ownerId', 'customers.id']]
     )[0];
-//    dd($car);
 
     $relatedCar = queryBuilderPrepare('cars', ['cars.id as carId, photoLocation', 'cars.name'], ['ownerId' => $car['ownerId']]);
-//    dd($relatedCar);
     ?>
     <!-- Page Content -->
     <div class="container">
@@ -132,11 +126,7 @@ if (isset($_GET['carId'])) {
                         </div>
                     </div>
                 </div>
-
-
             <?php } ?>
-
-
         </div>
         <!-- /.row -->
 
@@ -174,7 +164,6 @@ if (isset($_GET['carId'])) {
             [],
             [['customers', 'cars.ownerId', 'customers.id']]);
     }
-//    dd($cars);
     ?>
 
     <!-- Page Content -->
@@ -185,13 +174,6 @@ if (isset($_GET['carId'])) {
             <small><?= $catalogString ?></small>
 
         </h1>
-
-        <!--    <ol class="breadcrumb">-->
-        <!--        <li class="breadcrumb-item">-->
-        <!--            <a href="index.html">Home</a>-->
-        <!--        </li>-->
-        <!--        <li class="breadcrumb-item active">Blog Home 2</li>-->
-        <!--    </ol>-->
 
         <?php foreach ($cars as $car) { ?>
             <?php $carUrl = "/?route=catalog&carId=" . $car['carId'] ?>
@@ -211,14 +193,17 @@ if (isset($_GET['carId'])) {
                             <div class="row py-1 justify-content-around">
                                 <a href="<?= $carUrl ?>" class="btn btn-primary col-5">Read More &rarr;</a>
                                 <?php if (in_array($car['carId'], $_SESSION['compareList'])) { ?>
-                                    <a class="btn btn-danger px-2 col-5" href="/?route=catalog&delcompare=<?= $car['carId'] ?>">Remove compare</a>
+                                    <a class="btn btn-danger px-2 col-5"
+                                       href="/?route=catalog&delcompare=<?= $car['carId'] ?>">Remove compare</a>
                                 <?php } else { ?>
-                                    <a class="btn btn-success px-2 col-5" href="/?route=catalog&addcompare=<?= $car['carId'] ?>">Add to compare</a>
+                                    <a class="btn btn-success px-2 col-5"
+                                       href="/?route=catalog&addcompare=<?= $car['carId'] ?>">Add to compare</a>
                                 <?php } ?>
                             </div>
                             <div class="row py-1 justify-content-around">
-                                <a href="/?route=makeAppointment&carId=<?=$car['carId']?>" class="btn btn-info px-2 col-5">Make appointment</a>
-                                <a href="<?= $carUrl ?>" class="btn btn-success px-2 col-5">Order Now!</a>
+                                <a href="/?route=makeAppointment&carId=<?= $car['carId'] ?>"
+                                   class="btn btn-info px-2 col-5">Make appointment</a>
+                                <a href="/?route=order&carId=<?=$car['carId']?>" class="btn btn-success px-2 col-5">Order Now!</a>
                             </div>
                         </div>
                     </div>
@@ -232,3 +217,7 @@ if (isset($_GET['carId'])) {
     </div>
     <!-- /.container -->
 <?php } ?>
+
+
+
+

@@ -1,10 +1,21 @@
 <?php
 session_start();
-if (isset($_SESSION['compareList'])) {
-//    dd($_SESSION['compareList']);
-    $carComparing = queryBuilderPrepare('cars', ['*'], ['id' => $_SESSION['compareList']]);
-}
-?>
+
+if (!empty($_SESSION['compareList'])) {
+    if (count(array_filter($_SESSION['compareList'])) >= 2) {
+        $carComparing = queryBuilderPrepare('cars', ['*'], ['id' => $_SESSION['compareList']]);
+    } else { ?>
+        <script>
+            alert('You need to select at least two car to compare');
+            window.location.replace(window.location.origin + '/?route=catalog');
+        </script>
+    <?php }
+} else { ?>
+    <script>
+        alert('You compare list is empty, you can click the add to compare button to compare car model.');
+        window.location.replace(window.location.origin + '/?route=catalog');
+    </script>
+<?php } ?>
 
 <div class="container pt-2">
     <h2>compare result</h2>
@@ -51,9 +62,16 @@ if (isset($_SESSION['compareList'])) {
                             <div class=""></div>
                         </div>
 
-                        <div class="card-footer">
+                        <div class="card-footer d-flex flex-row">
                             <?php if (in_array($car['id'], $_SESSION['compareList'])) { ?>
-                                <a class="btn btn-success d-flex" href="/?route=catalog&delcompare=<?= $car['id'] ?>">Remove from compare</a>
+                                <a href="/?route=catalog&carId=<?= $car['id'] ?>"
+                                   class="btn btn-info d-flex flex-column px-3">Detail</a>
+                                <a href="/?route=order&carId=<?= $car['id'] ?>"
+                                   class="btn btn-success d-flex flex-column px-3">Order
+                                    Now!</a>
+                                <a class="btn btn-danger d-flex flex-column px-3"
+                                   href="/?route=catalog&delcompare=<?= $casr['id'] ?>">Remove
+                                    from compare</a>
                             <?php } ?>
                         </div>
                     </div>
