@@ -217,7 +217,9 @@ if ($auth) {
     } else if (isset($_GET['type']) && $_GET['type'] === "appointment") {
 //        show all appointments
 ?>
-
+        <div class="container">
+            <h4 class="my-2">All appointments</h4>
+        </div>
 <?php
     } else {
 ?>
