@@ -22,6 +22,21 @@ if ($auth) {
             <label for="carPhotoFile">Car Image (Only one image)</label>
             <input type="file" class="form-control-file" id="carPhotoFile" name="carPhoto">
         </div>
+        <div class="flex-row">
+            <label class="form-check-label">Selling Method</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="bid" id="fixedprice" value="0" checked>
+                <label class="form-check-label" for="fixedprice">
+                    Fixed Price
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="bid" id="Bidding" value="1">
+                <label class="form-check-label" for="Bidding">
+                    Bidding
+                </label>
+            </div>
+        </div>
         <div class="form-group">
             <label for="retailPriceInput">Start bid</label>
             <input type="number" name="retailPrice" class="form-control" id="retailPriceInput"  min="0" required>

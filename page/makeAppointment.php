@@ -1,10 +1,12 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['customer']['id'])) {
-    $_SESSION['ERROR'] = "Making appointments require login!";
-    header("location: /?route=login");
-}
+if (!isset($_SESSION['customer']['id'])) { ?>
+    <script>
+        alert('Making appointments require login!');
+        window.location.replace(window.location.origin + '/?route=login');
+    </script>
+<?php }
 if (isset($_GET['carId'])) {
     $car = queryBuilderPrepare('cars',
         ['cars.name as carName', 'customers.name as customerName', 'cars.description', 'cars.photoLocation', 'cars.id as carId', 'customers.name as ownerName'],
