@@ -117,6 +117,7 @@ if ($auth) {
                             <a class="btn btn-primary" href="/?route=update&carId=<?= $selling_car['id'] ?>">Update selling cars
                                 <span class="glyphicon glyphicon-chevron-right"></span>
                             </a>
+                            <button id="delete_id" class="btn btn-danger gg" onclick="setDelete(<?= $selling_car['id'] ?>)">Delete</button>
                         </div>
                     </div>
             <?php
@@ -141,13 +142,59 @@ if ($auth) {
                             <a class="btn btn-primary" href="/?route=update&carId=<?= $selling_car['id'] ?>">Update selling cars
                                 <span class="glyphicon glyphicon-chevron-right"></span>
                             </a>
+                            <button id="delete_id" class="btn btn-danger gg" onclick="setDelete(<?= $selling_car['id'] ?>)">Delete</button>
                         </div>
                     </div>
             <?php
                 }
             }
             ?>
+            <div id="delete-confirm" class="modal"  data-backdrop="static" data-keyboard="false">
+                <div class="vertical-alignment-helper">
+                    <div class="modal-dialog vertical-align-center">
+                        <div class="modal-content">
+                            <div class="modal-header">
+
+                                <h4 class="modal-title  text-center"> Attention</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-center">Are you sure you want to delete this car ad?</p>
+                                <form action="../handler/deleteCarAdHandler.php" method="post">
+                                    <input type="hidden" id="car_delete_id" name="carId">
+                                    <?php if($_SESSION['admin']) { ?>
+                                    <input type="hidden" name="ownerId" value="<?= $_SESSION['admin']['id'] ?>">
+                                    <?php } elseif ($_SESSION['customer']) { ?>
+                                    <input type="hidden" name="ownerId" value="<?= $_SESSION['customer']['id'] ?>">
+                                    <?php } ?>
+                                    <div class="text-center" >
+                                        <button type="submit" class=" btn btn-success"> Okay</button>
+                                        <button type="button" class=" btn btn-danger" data-dismiss="modal" >Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <script>
+            let gg_buttons = document.getElementsByClassName('gg');
+            for (let i = 0; i < gg_buttons.length; i++) {
+                gg_buttons[i].addEventListener('click', function(){
+                    $('#delete-confirm').modal('show');
+                    document.getElementById('car_delete_id').value = getDelete();
+                });
+            }
+            let deleteId;
+
+            function setDelete(id) {
+                this.deleteId = id
+            }
+
+            function getDelete() {
+                return this.deleteId
+            }
+        </script>
 <?php
 ?>
 
