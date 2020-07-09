@@ -120,7 +120,8 @@ if ($auth) {
                             <div class="card">
                                 <img class="card-img rounded mb-3 mb-md-0" src="<?= $selling_car['photoLocation'] ?>" alt="">
                                 <?php if ($selling_car['sold']) { ?>
-                                    <div class="card-img-overlay text-danger h2 d-flex justify-content-center align-items-end"><p>Sold</p></div>
+                                    <img class="card-img rounded mb-3 mb-md-0" src="<?= $selling_car['photoLocation'] ?>" alt="" style="background: white; opacity: 0.5">
+                                    <div class="card-img-overlay text-danger h2 d-flex justify-content-center align-items-end" ><p>Sold</p></div>
                                 <?php } ?>
                             </div>
                         </div>
@@ -145,7 +146,8 @@ if ($auth) {
                             <div class="card">
                                 <img class="card-img rounded mb-3 mb-md-0" src="<?= $selling_car['photoLocation'] ?>" alt="">
                                 <?php if ($selling_car['sold']) { ?>
-                                    <div class="card-img-overlay text-danger h2 d-flex justify-content-center align-items-end"><p>Sold</p></div>
+                                    <img class="card-img rounded mb-3 mb-md-0" src="<?= $selling_car['photoLocation'] ?>" alt="" style="background: white; opacity: 0.5">
+                                    <div class="card-img-overlay text-danger h2 d-flex justify-content-center align-items-end" ><p>Sold</p></div>
                                 <?php } ?>
                             </div>
                         </div>

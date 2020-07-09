@@ -193,7 +193,7 @@ function updatePrepare($table, $assoc_array, $where_assoc_array) {
     }
 
     $stmt = getPdo()->prepare($update_query);
-    $stmt->execute($bind_array);
+    return $stmt->execute($bind_array);
 
 }
 
