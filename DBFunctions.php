@@ -186,6 +186,27 @@ function updatePrepare($table, $assoc_array) {
     $stmt = getPdo()->prepare($update_query);
     $stmt->execute($bind_array);
 
+}
 
+function deletePrepare($table, $where_array) {
 
+    $query = "DELETE FROM $table ";
+
+    $bind_array = [];
+    if (isset($where_array)) {
+        $first = true;
+        foreach ($where_array as $key => $value) {
+            if ($first) {
+                $query .= " WHERE $key = ?";
+                array_push($bind_array, $value);
+                $first = false;
+            } else {
+                $query .= " AND $key = ?";
+                array_push($bind_array, $value);
+            }
+        }
+    }
+
+    $stmt = getPdo()->prepare($query);
+    return isset($bind_array) ? $stmt->execute($bind_array) : $stmt->execute();
 }
