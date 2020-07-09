@@ -4,8 +4,8 @@ require_once "../DBFunctions.php";
 if ((isset($_SESSION['customer']) || isset($_SESSION['admin']))) {
     require_once "./imageUploadHandler.php";
     $record_success = insertPrepare('cars',
-        ['name', 'description', 'photoLocation', 'retailPrice', 'productCost', 'oldCar', 'ownerId', 'sold', 'brandName', 'pros', 'cons', 'specifications', 'fuel_typesId'],
-        [$_POST['name'], $_POST['description'], $target_file, $_POST['retailPrice'], $_POST['productCost'], $_POST['oldCar'], $_POST['ownerId'], $_POST['sold'], $_POST['brandName'], $_POST['pros'], $_POST['cons'], $_POST['specifications'], $_POST['fuel_typesId']]
+        ['name', 'description', 'photoLocation', 'retailPrice', 'productCost', 'oldCar', 'ownerId', 'sold', 'brandName', 'pros', 'cons', 'specifications', 'fuel_typesId', 'bid'],
+        [$_POST['name'], $_POST['description'], $target_file, $_POST['retailPrice'], $_POST['productCost'], $_POST['oldCar'], $_POST['ownerId'], $_POST['sold'], $_POST['brandName'], $_POST['pros'], $_POST['cons'], $_POST['specifications'], $_POST['fuel_typesId'], $_POST['bid']]
     );
     if ($record_success) {
 ?>
