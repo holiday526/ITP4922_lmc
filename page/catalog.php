@@ -27,7 +27,7 @@ if (isset($_GET['addcompare'])) {
 if (isset($_GET['carId'])) {
 //    Show the queried car (single car)
     $car = queryBuilderPrepare('cars',
-        ['cars.name as carName', 'cars.id as carId', 'customers.id as ownerId', 'photoLocation', 'description', 'brandName', 'odometer', 'transmission', 'make', 'year_manufactured', 'pros', 'cons', 'specifications', 'color'],
+        ['cars.name as carName', 'cars.id as carId', 'customers.id as ownerId', 'photoLocation', 'description', 'brandName', 'odometer', 'transmission', 'make', 'year_manufactured', 'pros', 'cons', 'specifications', 'color', 'retailPrice', 'bid'],
         ['cars.id' => $_GET['carId']],
         [],
         [['customers', 'cars.ownerId', 'customers.id']]
@@ -68,6 +68,8 @@ if (isset($_GET['carId'])) {
                     <li>Year Manufactured: <?=$car['year_manufactured']?></li>
                     <li>Color: <?=$car['color']?></li>
                 </ul>
+                <h3 class="my-3">Price </h3>
+                <p><?php if ($car['bid']) { echo 'Current';} else { echo 'Fixed';}?>Price: $ <?= $car['retailPrice'] ?></p>
             </div>
 
         </div>
@@ -114,7 +116,7 @@ if (isset($_GET['carId'])) {
         <!-- /.row -->
 
         <!-- Related Projects Row -->
-        <h3 class="my-4">Related Car</h3>
+        <h3 class="my-4">This car owner also selling</h3>
 
         <div class="row">
             <?php foreach ($relatedCar as $car) {
@@ -196,12 +198,13 @@ if (isset($_GET['carId'])) {
                     <div class="row">
                         <div class="col-6">
                             <a href="<?= $carUrl ?>">
-                                <img class="img-fluid rounded" src="<?= $car['photoLocation'] ?>" alt="">
+                                <img class="img-fluid rounded car-img" src="<?= $car['photoLocation'] ?>" style="max-height: 300px" alt="">
                             </a>
                         </div>
-                        <div class="col-6">
-                            <h2 class="card-title"><?= $car['carName'] ?></h2>
+                        <div class="col-6 align-content-center my-auto">
+                            <h2 class="card-title"><?= $car['carName'] ?> <br><small>Current price: $<?= $car['retailPrice'] ?></small></h2>
                             <p class="card-text"><?= $car['description'] ?></p>
+                            <p class="card-text"></p>
                             <div class="row py-1 justify-content-around">
                                 <a href="<?= $carUrl ?>" class="btn btn-primary col-5">Read More &rarr;</a>
                                 <?php if (in_array($car['carId'], $_SESSION['compareList'])) { ?>
