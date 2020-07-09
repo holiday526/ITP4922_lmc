@@ -138,13 +138,16 @@ if ($auth) {
                             <p>Description: <?= $selling_car['description'] ?></p>
                             <p>Product Cost: $<?= $selling_car['productCost'] ?></p>
                             <p>Current Price: $<?= $selling_car['retailPrice'] ?></p>
-                            <a class="btn btn-primary" href="/?route=update&carId=<?= $selling_car['id'] ?>">Update
-                                selling cars
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-                            <button id="delete_id" class="btn btn-danger gg"
-                                    onclick="setDelete(<?= $selling_car['id'] ?>)">Delete
-                            </button>
+
+                            <?php if (!$selling_car['sold']) { ?>
+                                <a class="btn btn-primary" href="/?route=update&carId=<?= $selling_car['id'] ?>">Update
+                                    selling cars
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                </a>
+                                <button id="delete_id" class="btn btn-danger gg"
+                                        onclick="setDelete(<?= $selling_car['id'] ?>)">Delete
+                                </button>
+                            <?php } ?>
                         </div>
                     </div>
                     <?php
