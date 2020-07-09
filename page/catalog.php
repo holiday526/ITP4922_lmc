@@ -175,9 +175,12 @@ if (isset($_GET['carId'])) {
 
         </h1>
 
-        <?php foreach ($cars as $car) { ?>
-            <?php $carUrl = "/?route=catalog&carId=" . $car['carId'] ?>
-            <?php $customerUrl = "/?route=profile&id=" . $car['customerId'] ?>
+        <?php foreach ($cars as $car) {
+            if ($car['ownerId'] == $_SESSION['customer']['id']) {
+                continue;
+            }
+            $carUrl = "/?route=catalog&carId=" . $car['carId'];
+            $customerUrl = "/?route=profile&id=" . $car['customerId']; ?>
             <!-- Blog Post -->
             <div id="car<?= $car['carId'] ?>" class="card mb-4">
                 <div class="card-body">
