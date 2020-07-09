@@ -3,7 +3,6 @@ session_start();
 require_once "../DBFunctions.php";
 ?>
 
-
 <?php if (empty($_POST['carId']) || $_POST['action'] !== 'make' || $_SERVER['REQUEST_METHOD'] != 'POST') { ?>
     <script>
         alert('Bad request!');
@@ -56,9 +55,10 @@ require_once "../DBFunctions.php";
 <?php
 function createAppointment($carId, $appointmentDateTime, $appointNotes)
 {
+    global $user;
     return insertPrepare('appointments',
         ['carId', 'appointmentUserId', 'appointmentDateTime', 'appointmentNotes'],
-        [$_POST['carId'], $_SESSION['customer']['id'], datetime_localToTimestamp($appointmentDateTime), $appointNotes]
+        [$_POST['carId'], $user['id'], datetime_localToTimestamp($appointmentDateTime), $appointNotes]
     );
 }
 
