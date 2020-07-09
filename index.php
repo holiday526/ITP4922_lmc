@@ -31,6 +31,9 @@ if (isset($_GET['route'])){
         case 'order': $page = 'order'; break;
         case 'allOrder': $page = 'adminOrder'; break;
         case 'orderRecord': $page = 'orderRecord'; break;
+        case 'orderCreate': $page = 'orderCreate'; break;
+        case 'orderIndex': $page = 'orderIndex'; break;
+        case 'orderEdit': $page = 'orderEdit'; break;
         default: $page = "404";
     }
 } else {
