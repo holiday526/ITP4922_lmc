@@ -74,7 +74,7 @@
                         <?php
                         }
                         ?>
-                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="?route=userProfile">Profile</a>
                         <a class="dropdown-item" href="../logout.php">Logout</a>
                     </div>
                 </li>
