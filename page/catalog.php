@@ -13,9 +13,14 @@ if (isset($_GET['addcompare'])) {
         if (!in_array($_GET['addcompare'], $_SESSION['compareList'])) {
             $_SESSION['compareList'][] = $_GET['addcompare'];
         }
-    }
-    header('Location: ' . $_SERVER['HTTP_REFERER'] . '#car' . $_GET['addcompare']);
-} elseif (isset($_GET['delcompare'])) {
+    } else { ?>
+        <script>
+            alert('You can only compare 2-4 car!');
+            window.location.replace(window.location.origin + '/?route=catalog');
+        </script>
+        <?php die('compareList full'); ?>
+    <?php } ?>
+<?php } elseif (isset($_GET['delcompare'])) {
     if (in_array($_GET['delcompare'], $_SESSION['compareList'])) {
         if (($key = array_search($_GET['delcompare'], $_SESSION['compareList'])) !== false) {
             unset($_SESSION['compareList'][$key]);
