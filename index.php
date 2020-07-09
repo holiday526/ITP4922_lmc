@@ -26,8 +26,9 @@ if (isset($_GET['route'])){
         case 'update': $page = 'updateSellAd'; break;
         case 'user_profile': $page = 'user_profile'; break;
         case 'makeAppointment': $page = 'makeAppointment'; break;
-        case 'order': $page = 'order'; break;
-        case 'orderRecord': $page = 'orderRecord'; break;
+        case 'orderCreate': $page = 'orderCreate'; break;
+        case 'orderIndex': $page = 'orderIndex'; break;
+        case 'orderEdit': $page = 'orderEdit'; break;
         default: $page = "404";
     }
 } else {

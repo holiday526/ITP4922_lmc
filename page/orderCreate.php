@@ -12,7 +12,7 @@ if (!$auth) { ?>
     <?php die('require login'); ?>
 <?php } ?>
 
-<?php if ($_GET['route'] != 'order' || empty($_GET['carId'])) { ?>
+<?php if ($_GET['route'] != 'orderCreate' || empty($_GET['carId'])) { ?>
     <script>
         alert('Wrong request!');
         window.location.replace(window.location.origin + '/?route=catalog');
@@ -124,6 +124,7 @@ if (!$car) { ?>
                     </div>
                 </div>
                 <input type="hidden" name="carId" value="<?=$_GET['carId']?>">
+                <input type="hidden" name="action" value="store">
                 <button type="submit" class="btn btn-primary" id="sendMessageButton">Confirm Order</button>
             </form>
         </div>
