@@ -1,38 +1,43 @@
 <header>
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <?php $cars = queryBuilderPrepare('cars', ['*'], ['sold'=>0],['id'=>'desc'], [],5) ?>
+            <?php for ($i = 0; $i < count($cars); $i++) { ?>
+            <?php   if ($i == 0) { ?>
+                <li data-target="#carouselIndicators" data-slide-to="<?= $i ?>" class="active"></li>
+            <?php } else { ?>
+                <li data-target="#carouselIndicators" data-slide-to="<?= $i ?>"></li>
+            <?php
+                }
+            } ?>
         </ol>
         <div class="carousel-inner" role="listbox">
             <!-- Slide One - Set the background image for this slide in the line below -->
-            <div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3>First Slide</h3>
-                    <p>This is a description for the first slide.</p>
+            <?php for ($i = 0; $i < count($cars); $i++) { ?>
+
+            <?php   if ($i == 0) { ?>
+                <div class="carousel-item active" style="background-image: url('<?= $cars[$i]['photoLocation'] ?>')">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3><?= $cars[$i]['name'] ?></h3>
+                        <p><?= $cars[$i]['description'] ?></p>
+                    </div>
                 </div>
-            </div>
-            <!-- Slide Two - Set the background image for this slide in the line below -->
-            <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3>Second Slide</h3>
-                    <p>This is a description for the second slide.</p>
+            <?php } else { ?>
+                <div class="carousel-item" style="background-image: url('<?= $cars[$i]['photoLocation'] ?>')">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3><?= $cars[$i]['name'] ?></h3>
+                        <p><?= $cars[$i]['description'] ?></p>
+                    </div>
                 </div>
-            </div>
-            <!-- Slide Three - Set the background image for this slide in the line below -->
-            <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3>Third Slide</h3>
-                    <p>This is a description for the third slide.</p>
-                </div>
-            </div>
+                    <?php
+                }
+            } ?>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>

@@ -6,7 +6,6 @@ require_once '../DBFunctions.php';
 $auth = isset($_SESSION['admin']);
 
 if ($auth) {
-    dd($_POST);
     if ($_POST['orderAction'] === "Delete") {
         $deleted = deletePrepare('orders', ['id'=>$_POST['orderId']]);
         if ($deleted) {
