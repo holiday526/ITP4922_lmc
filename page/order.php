@@ -115,7 +115,7 @@ if (!$car) { ?>
                 <div class="control-group form-group">
                     <div class="controls">
                         <label>Order Notes:</label>
-                        <textarea rows="10" cols="100" class="form-control" id="message" name="orderNotes" required
+                        <textarea rows="10" cols="100" class="form-control" id="message" name="orderNotes"
                                   data-validation-required-message="Please enter your message" maxlength="999"
                                   style="resize:none"></textarea>
                     </div>
