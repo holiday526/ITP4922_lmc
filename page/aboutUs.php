@@ -7,8 +7,8 @@
 
     <!-- Intro Content -->
     <div class="row">
-        <div class="col-lg-6">
-            <img class="img-fluid rounded mb-4" src="http://placehold.it/750x450" alt="">
+        <div class="col-lg-6 text-center">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.296731014789!2d114.10405321494864!3d22.34242198530171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3403f8d2dc85656f%3A0xe52d12c0080581c8!2sHong%20Kong%20Institute%20of%20Vocational%20Education%20(Tsing%20Yi%20Campus)!5e0!3m2!1sen!2shk!4v1594319791161!5m2!1sen!2shk" width="500" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
         </div>
         <div class="col-lg-6">
             <h2>About Auto Car Sales Ltd</h2>

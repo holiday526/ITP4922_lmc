@@ -75,6 +75,7 @@
                         }
                         ?>
                         <a class="dropdown-item" href="?route=userProfile">Profile</a>
+                        <a class="dropdown-item" href="?route=changePassword">Change Password</a>
                         <a class="dropdown-item" href="../logout.php">Logout</a>
                     </div>
                 </li>
