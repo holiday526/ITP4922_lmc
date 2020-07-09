@@ -176,7 +176,7 @@ if (isset($_GET['carId'])) {
         </h1>
 
         <?php foreach ($cars as $car) {
-            if ($car['ownerId'] == $_SESSION['customer']['id']) {
+            if ($car['ownerId'] == $_SESSION['customer']['id'] || $car['sold'] == '1') {
                 continue;
             }
             $carUrl = "/?route=catalog&carId=" . $car['carId'];
