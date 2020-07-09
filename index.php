@@ -15,6 +15,7 @@ if (isset($_GET['route'])){
     $route = $_GET['route'];
     switch ($route) {
         case 'admin': $page = 'adminLogin'; break;
+        case 'about': $page = 'aboutUs'; break;
         case 'bid': $page = 'bid'; break;
         case 'login': $page = 'login'; break;
         case 'register': $page = 'register'; break;
