@@ -11,6 +11,7 @@ if (empty('route') || empty('carId') || $_SERVER['REQUEST_METHOD'] != 'POST') { 
 <?php } ?>
 
 <?php $auth = (isset($_SESSION['customer']) || isset($_SESSION['admin'])); ?>
+<?php $user = isset($_SESSION['customer']) ? $_SESSION['customer'] : $_SESSION['admin'];?>
 
 <?php if (!$auth) {?>
     <script>
@@ -38,7 +39,7 @@ if (empty('route') || empty('carId') || $_SERVER['REQUEST_METHOD'] != 'POST') { 
     <?php die('already sold'); ?>
 <?php } ?>
 
-<?php if ($car['ownerId'] == $_SESSION['customer']['id']) { ?>
+<?php if ($car['ownerId'] == $user['id']) { ?>
     <script>
         alert('You can not order your own car!');
         window.location.replace(window.location.origin + '/?route=catalog');
@@ -47,8 +48,7 @@ if (empty('route') || empty('carId') || $_SERVER['REQUEST_METHOD'] != 'POST') { 
 <?php } ?>
 
 <?php
-$user = isset($_SESSION['customer']) ? $_SESSION['customer'] : $_SESSION['admin'];
-$sold = updatePrepare('cars', ['id'=>$_GET['carId'], 'sold'=>1]);
+$sold = updatePrepare('cars', ['sold'=>1], ['id'=>$_POST['carId']]);
 $result = insertPrepare('orders',
     ['carId', 'customerId', 'orderNotes'],
     [$_POST['carId'], $user['id'], $_POST['orderNotes']]

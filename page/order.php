@@ -1,7 +1,10 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['customer'])) { ?>
+$auth = (isset($_SESSION['customer']) || isset($_SESSION['admin']));
+$user = isset($_SESSION['customer']) ? $_SESSION['customer'] : $_SESSION['admin'];
+
+if (!$auth) { ?>
     <script>
         alert('Ordering car require login!');
         window.location.replace(window.location.origin + '/?route=login');
@@ -41,7 +44,7 @@ if (!$car) { ?>
     <?php die('already sold'); ?>
 <?php } ?>
 
-<?php if ($car['ownerId'] == $_SESSION['customer']['id']) { ?>
+<?php if ($car['ownerId'] == $user['id']) { ?>
     <script>
         alert('You can not order your own car!');
         window.location.replace(window.location.origin + '/?route=catalog');
@@ -94,7 +97,7 @@ if (!$car) { ?>
                     <div class="controls">
                         <label>Full Name:</label>
                         <input type="text" class="form-control" id="name" required
-                               data-validation-required-message="Please enter your name." value="<?=$_SESSION['customer']['name']?>" disabled>
+                               data-validation-required-message="Please enter your name." value="<?=$user['name']?>" disabled>
                         <p class="help-block"></p>
                     </div>
                 </div>
@@ -102,14 +105,14 @@ if (!$car) { ?>
                     <div class="controls">
                         <label>Phone Number:</label>
                         <input type="tel" class="form-control" id="phone" required
-                               data-validation-required-message="Please enter your phone number." value="<?=$_SESSION['customer']['contactPhones']?>" disabled>
+                               data-validation-required-message="Please enter your phone number." value="<?=$user['contactPhones']?>" disabled>
                     </div>
                 </div>
                 <div class="control-group form-group">
                     <div class="controls">
                         <label>Email Address:</label>
                         <input type="email" class="form-control" id="email" required
-                               data-validation-required-message="Please enter your email address." value="<?=$_SESSION['customer']['email']?>" disabled>
+                               data-validation-required-message="Please enter your email address." value="<?=$user['email']?>" disabled>
                     </div>
                 </div>
                 <div class="control-group form-group">
