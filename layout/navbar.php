@@ -44,6 +44,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownYourCar">
                         <a class="dropdown-item" href="?route=sell&type=create">Sell a car</a>
+                        <a class="dropdown-item" href="?route=orderRecord">Order record</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="?route=sell&type=show">My selling car</a>
                         <a class="dropdown-item" href="?route=sell&type=appointment">My appointment</a>
