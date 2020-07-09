@@ -27,6 +27,7 @@ if (isset($_GET['route'])){
         case 'user_profile': $page = 'user_profile'; break;
         case 'makeAppointment': $page = 'makeAppointment'; break;
         case 'order': $page = 'order'; break;
+        case 'allOrder': $page = 'adminOrder'; break;
         default: $page = "404";
     }
 } else {
