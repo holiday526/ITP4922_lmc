@@ -48,13 +48,12 @@ if (empty('route') || empty('carId') || $_SERVER['REQUEST_METHOD'] != 'POST') { 
 <?php } ?>
 
 <?php
-$sold = updatePrepare('cars', ['sold'=>1], ['id'=>$_POST['carId']]);
 $result = insertPrepare('orders',
     ['carId', 'customerId', 'orderNotes'],
     [$_POST['carId'], $user['id'], $_POST['orderNotes']]
 );
 
-if ($result && $sold) {?>
+if ($result) {?>
     <script>
         alert('Congratulations, Order placed!');
         window.location.replace(window.location.origin + '/?route=catalog');
