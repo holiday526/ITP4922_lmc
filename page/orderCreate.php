@@ -52,6 +52,16 @@ if (!$car) { ?>
     <?php die('ordering own car'); ?>
 <?php } ?>
 
+<?php $orders = queryBuilderPrepare('orders', ['*'], ['orders.customerId' => $user['id'], 'orders.carId'=>$_GET['carId']]) ?>
+<?php //dd($orders);?>
+<?php if ($orders) { ?>
+    <script>
+        alert('Order already place fot this car!');
+        window.location.replace(window.location.origin + '/?route=catalog');
+    </script>
+    <?php die('ordering already exist'); ?>
+<?php } ?>
+
 <div class="container">
     <!-- Page Heading/Breadcrumbs -->
     <h1 class="mt-4 mb-3"><?= $car['carName'] ?>
@@ -75,13 +85,13 @@ if (!$car) { ?>
             <p><?= $car['transmission'] ?></p>
 
             <h5>Odometer:</h5>
-            <p><?=$car['odometer']?>Km</p>
+            <p><?= $car['odometer'] ?>Km</p>
 
             <h5>Fuel Types:</h5>
-            <p><?=$fuel_type?></p>
+            <p><?= $fuel_type ?></p>
 
             <h5>Current Price:</h5>
-            <p>$<?=$car['retailPrice']?></p>
+            <p>$<?= $car['retailPrice'] ?></p>
 
         </div>
     </div>
@@ -97,7 +107,8 @@ if (!$car) { ?>
                     <div class="controls">
                         <label for="name">Full Name:</label>
                         <input type="text" class="form-control" id="name" required
-                               data-validation-required-message="Please enter your name." value="<?=$user['name']?>" disabled>
+                               data-validation-required-message="Please enter your name." value="<?= $user['name'] ?>"
+                               disabled>
                         <p class="help-block"></p>
                     </div>
                 </div>
@@ -105,14 +116,16 @@ if (!$car) { ?>
                     <div class="controls">
                         <label for="phone">Phone Number:</label>
                         <input type="tel" class="form-control" id="phone" required
-                               data-validation-required-message="Please enter your phone number." value="<?=$user['contactPhones']?>" disabled>
+                               data-validation-required-message="Please enter your phone number."
+                               value="<?= $user['contactPhones'] ?>" disabled>
                     </div>
                 </div>
                 <div class="control-group form-group">
                     <div class="controls">
                         <label for="email">Email Address:</label>
                         <input type="email" class="form-control" id="email" required
-                               data-validation-required-message="Please enter your email address." value="<?=$user['email']?>" disabled>
+                               data-validation-required-message="Please enter your email address."
+                               value="<?= $user['email'] ?>" disabled>
                     </div>
                 </div>
                 <div class="control-group form-group">
@@ -123,7 +136,7 @@ if (!$car) { ?>
                                   style="resize:none"></textarea>
                     </div>
                 </div>
-                <input type="hidden" name="carId" value="<?=$_GET['carId']?>">
+                <input type="hidden" name="carId" value="<?= $_GET['carId'] ?>">
                 <input type="hidden" name="action" value="store">
                 <button type="submit" class="btn btn-primary">Confirm Order</button>
             </form>

@@ -1,7 +1,13 @@
 <?php
 session_start();
 //dd($_SESSION['customer']['id']);
+?>
 
+<?php $auth = (isset($_SESSION['customer']) || isset($_SESSION['admin'])); ?>
+<?php $user = isset($_SESSION['customer']) ? $_SESSION['customer'] : $_SESSION['admin']; ?>
+
+
+<?php
 if (isset($_GET['addcompare'])) {
     if (count(array_filter($_SESSION['compareList'])) < 4) {
         if (!in_array($_GET['addcompare'], $_SESSION['compareList'])) {
@@ -164,6 +170,7 @@ if (isset($_GET['carId'])) {
             [],
             [['customers', 'cars.ownerId', 'customers.id']]);
     }
+
     ?>
 
     <!-- Page Content -->
@@ -176,7 +183,8 @@ if (isset($_GET['carId'])) {
         </h1>
 
         <?php foreach ($cars as $car) {
-            if ($car['ownerId'] == $_SESSION['customer']['id'] || $car['sold'] == '1') {
+            $order = queryBuilderPrepare('orders', ['*'], ['orders.carId'=>$car['carId'], 'orders.customerId'=>$user['id']])[0];
+            if ($car['ownerId'] == $user['id'] || $car['sold'] || $order['processed']) {
                 continue;
             }
             $carUrl = "/?route=catalog&carId=" . $car['carId'];
@@ -206,12 +214,14 @@ if (isset($_GET['carId'])) {
                             <div class="row py-1 justify-content-around">
                                 <a href="/?route=makeAppointment&carId=<?= $car['carId'] ?>"
                                    class="btn btn-info px-2 col-5">Make appointment</a>
-                                <?php if ($car['bid'] == false) { ?>
-                                    <a href="/?route=order&carId=<?= $car['carId'] ?>"
+                                <?php if ($car['bid'] == false && !$order) { ?>
+                                    <a href="/?route=orderCreate&carId=<?= $car['carId'] ?>"
                                        class="btn btn-success px-2 col-5">Order Now!</a>
-                                <?php } elseif ($car['bid'] == true) { ?>
+                                <?php } elseif ($car['bid'] == true && !$order) { ?>
                                     <a href="/?route=bid&carId=<?= $car['carId'] ?>" class="btn btn-warning px-2 col-5">Bid
                                         Now!</a>
+                                <?php } elseif ($order) {?>
+                                    <a href="/?route=orderIndex" class="btn btn-secondary px-2 col-5">Order pending...</a>
                                 <?php } ?>
                             </div>
                         </div>
