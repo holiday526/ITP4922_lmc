@@ -70,7 +70,7 @@ if (!empty($_SESSION['compareList'])) {
                                    class="btn btn-success d-flex flex-column px-3">Order
                                     Now!</a>
                                 <a class="btn btn-danger d-flex flex-column px-3"
-                                   href="/?route=catalog&delcompare=<?= $casr['id'] ?>">Remove
+                                   href="/?route=catalog&delcompare=<?= $car['id'] ?>">Remove
                                     from compare</a>
                             <?php } ?>
                         </div>
