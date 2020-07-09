@@ -66,7 +66,7 @@ if (!empty($_SESSION['compareList'])) {
                             <?php if (in_array($car['id'], $_SESSION['compareList'])) { ?>
                                 <a href="/?route=catalog&carId=<?= $car['id'] ?>"
                                    class="btn btn-info d-flex flex-column px-3">Detail</a>
-                                <a href="/?route=order&carId=<?= $car['id'] ?>"
+                                <a href="/?route=orderCreate&carId=<?= $car['id'] ?>"
                                    class="btn btn-success d-flex flex-column px-3">Order
                                     Now!</a>
                                 <a class="btn btn-danger d-flex flex-column px-3"
