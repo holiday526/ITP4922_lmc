@@ -27,19 +27,18 @@ if (isset($_GET['addcompare'])) {
 if (isset($_GET['carId'])) {
 //    Show the queried car (single car)
     $car = queryBuilderPrepare('cars',
-        ['*'],
+        ['cars.name as carName', 'cars.id as carId', 'customers.id as ownerId', 'photoLocation', 'description', 'brandName', 'odometer', 'transmission', 'make', 'year_manufactured', 'pros', 'cons', 'specifications', 'color'],
         ['cars.id' => $_GET['carId']],
         [],
         [['customers', 'cars.ownerId', 'customers.id']]
     )[0];
-
-    $relatedCar = queryBuilderPrepare('cars', ['cars.id as carId, photoLocation', 'cars.name'], ['ownerId' => $car['ownerId']]);
+    $relatedCar = queryBuilderPrepare('cars', ['cars.id as carId, photoLocation', 'cars.name'], ['ownerId' => $car['ownerId'], 'sold' => 0]);
     ?>
     <!-- Page Content -->
     <div class="container">
 
         <!-- Page Heading/Breadcrumbs -->
-        <h1 class="mt-4 mb-3"><?= $car['name'] ?>
+        <h1 class="mt-4 mb-3"><?= $car['carName'] ?>
             <small></small>
         </h1>
 
@@ -62,10 +61,12 @@ if (isset($_GET['carId'])) {
                 <p><?= $car['description'] ?></p>
                 <h3 class="my-3">Car Details</h3>
                 <ul>
-                    <li>Lorem Ipsum</li>
-                    <li>Dolor Sit Amet</li>
-                    <li>Consectetur</li>
-                    <li>Adipiscing Elit</li>
+                    <li>Brand: <?=$car['brandName']?></li>
+                    <li>Odometer: <?=$car['odometer']?>Km</li>
+                    <li>Transmission: <?=$car['transmission']?></li>
+                    <li>Make at: <?=$car['make']?></li>
+                    <li>Year Manufactured: <?=$car['year_manufactured']?></li>
+                    <li>Color: <?=$car['color']?></li>
                 </ul>
             </div>
 
