@@ -11,11 +11,16 @@ require_once "../DBFunctions.php";
 
 if ($auth) {
     $user = isset($_SESSION['customer']) ? $_SESSION['customer'] : $_SESSION['admin'];
-    $retailPrice = queryBuilderPrepare('cars', ['retailPrice'], ['id'=>$_POST['carId'], 'bid'=>1])[0]['retailPrice'];
-    dd($_POST);
-    dd($retailPrice);
+    $retailPrice = queryBuilderPrepare('cars', ['retailPrice'], ['id'=>$_POST['carId'], 'bid'=>1, 'sold'=>0])[0]['retailPrice'];
+    $bidPrice = (float)$_POST['bidPrice'] >= 100? $_POST['bidPrice'] : 100;
     if (!empty($retailPrice)) {
-        updatePrepare('cars', ['id'=>$_POST['carId'], 'lastBidUserId'=>$_POST['userId'], 'retailPrice'=>(float)$retailPrice+(float)$_POST['bidPrice']]);
+        updatePrepare('cars', ['id'=>$_POST['carId'], 'lastBidUserId'=>$user['id'], 'retailPrice'=>(float)$retailPrice+$bidPrice]);
+?>
+        <script>
+            alert('bid ordered');
+            window.location.replace(window.location.origin + "/?route=bid&carId=<?= $_POST['carId'] ?>")
+        </script>
+<?php
     } else {
 ?>
         <script>
