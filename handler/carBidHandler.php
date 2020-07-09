@@ -15,6 +15,22 @@ if ($auth) {
     $bidPrice = (float)$_POST['bidPrice'] >= 100? $_POST['bidPrice'] : 100;
     if (!empty($retailPrice)) {
         updatePrepare('cars', ['lastBidUserId'=>$user['id'], 'retailPrice'=>(float)$retailPrice+$bidPrice], ['id'=>$_POST['carId']]);
+        $order = queryBuilderPrepare('orders', ['id','carId'], ['carId'=>$_POST['carId']])[0];
+        if (!empty($order)) {
+            $updated = updatePrepare('orders', ['customerId'=>$user['id']], ['id'=>$order['id']]);
+?>
+            <script>
+                alert("Bid order updated: Latest Customer is <?= $user['id'] ?>");
+            </script>
+<?php
+        } else {
+            $inserted = insertPrepare('orders', ['carId', 'customerId'], [$_POST['carId'], $user['id']]);
+?>
+            <script>
+                alert("Bid order created: Latest Customer is <?= $user['id'] ?>");
+            </script>
+<?php
+        }
 ?>
         <script>
             alert('bid ordered');
