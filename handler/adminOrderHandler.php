@@ -27,7 +27,7 @@ if ($auth) {
     } else if ($_POST['orderAction'] === "Mark as sold") {
         $updated = updatePrepare('orders', ['processed'=>1], ['id'=>$_POST['orderId']]);
         if ($updated) {
-            $deleted_other_orders = deletePrepare('orders', ['carId'=>$_POST, 'processed'=>0]);
+            $deleted_other_orders = deletePrepare('orders', ['carId'=>$_POST['carId'], 'processed'=>0]);
             $mark_as_sold_car = updatePrepare('cars', ['sold'=>1], ['id'=>$_POST['carId']]);
 ?>
             <script>
