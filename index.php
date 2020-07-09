@@ -26,7 +26,7 @@ if (isset($_GET['route'])){
         case 'sell': $page = 'sell'; break;
         case 'search': $page = 'search'; break;
         case 'update': $page = 'updateSellAd'; break;
-        case 'user_profile': $page = 'user_profile'; break;
+        case 'userProfile': $page = 'userProfile'; break;
         case 'makeAppointment': $page = 'makeAppointment'; break;
         case 'order': $page = 'order'; break;
         case 'allOrder': $page = 'adminOrder'; break;
