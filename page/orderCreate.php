@@ -95,7 +95,7 @@ if (!$car) { ?>
             <form action="../handler/orderHandler.php" name="sentMessage" id="contactForm" method="post">
                 <div class="control-group form-group">
                     <div class="controls">
-                        <label>Full Name:</label>
+                        <label for="name">Full Name:</label>
                         <input type="text" class="form-control" id="name" required
                                data-validation-required-message="Please enter your name." value="<?=$user['name']?>" disabled>
                         <p class="help-block"></p>
@@ -103,29 +103,29 @@ if (!$car) { ?>
                 </div>
                 <div class="control-group form-group">
                     <div class="controls">
-                        <label>Phone Number:</label>
+                        <label for="phone">Phone Number:</label>
                         <input type="tel" class="form-control" id="phone" required
                                data-validation-required-message="Please enter your phone number." value="<?=$user['contactPhones']?>" disabled>
                     </div>
                 </div>
                 <div class="control-group form-group">
                     <div class="controls">
-                        <label>Email Address:</label>
+                        <label for="email">Email Address:</label>
                         <input type="email" class="form-control" id="email" required
                                data-validation-required-message="Please enter your email address." value="<?=$user['email']?>" disabled>
                     </div>
                 </div>
                 <div class="control-group form-group">
                     <div class="controls">
-                        <label>Order Notes:</label>
-                        <textarea rows="10" cols="100" class="form-control" id="message" name="orderNotes"
+                        <label for="orderNotes">Order Notes:</label>
+                        <textarea rows="10" cols="100" class="form-control" id="orderNotes" name="orderNotes"
                                   data-validation-required-message="Please enter your message" maxlength="999"
                                   style="resize:none"></textarea>
                     </div>
                 </div>
                 <input type="hidden" name="carId" value="<?=$_GET['carId']?>">
                 <input type="hidden" name="action" value="store">
-                <button type="submit" class="btn btn-primary" id="sendMessageButton">Confirm Order</button>
+                <button type="submit" class="btn btn-primary">Confirm Order</button>
             </form>
         </div>
 
