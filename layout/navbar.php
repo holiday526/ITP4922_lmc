@@ -11,16 +11,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/?route=about">About Us</a>
                 </li>
-<!--                <li class="nav-item">-->
-<!--                    <div class="input-group">-->
-<!--                        <input type="text" class="form-control" placeholder="Search">-->
-<!--                        <div class="input-group-append">-->
-<!--                            <button class="btn btn-secondary" type="button">-->
-<!--                                <i class="fa fa-search"></i>-->
-<!--                            </button>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </li>-->
                 <li class="nav-item">
                     <a class="nav-link" href="/?route=compare">Compare model</a>
                 </li>
@@ -33,6 +23,21 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="?route=catalog&type=new">New Cars</a>
                         <a class="dropdown-item" href="?route=catalog&type=2nd">2<sup>nd</sup> Hand Cars</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCarProduct" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Search
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownCarProduct" style="background: transparent; border: none">
+                        <form action="/?route=search" method="post">
+                            <div class="input-group mb-3">
+                                <input type="text" name="search" class="nav-item form-control" placeholder="Search">
+                                <div class="input-group-append">
+                                    <button class="btn btn-success" type="submit">go</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </li>
                 <!-- End of normal users -->

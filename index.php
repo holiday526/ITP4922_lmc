@@ -24,6 +24,7 @@ if (isset($_GET['route'])){
         case 'compare': $page = 'compare'; break;
         case 'catalog': $page = 'catalog'; break;
         case 'sell': $page = 'sell'; break;
+        case 'search': $page = 'search'; break;
         case 'update': $page = 'updateSellAd'; break;
         case 'user_profile': $page = 'user_profile'; break;
         case 'makeAppointment': $page = 'makeAppointment'; break;

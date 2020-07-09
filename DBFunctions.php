@@ -224,3 +224,26 @@ function deletePrepare($table, $where_array) {
     }
 
 }
+
+function searchPrepare($search_str) {
+    $query = "SELECT * FROM cars
+          WHERE name LIKE ? 
+          OR description LIKE ?
+          OR brandName LIKE ?
+          OR pros LIKE ?
+          OR cons LIKE ?
+          OR specifications LIKE ?
+          OR transmission LIKE ? ";
+
+    $array = [];
+
+    for ($i = 0; $i < 7; $i++) {
+        array_push($array, "%".$_POST['search']."%");
+    }
+
+    $result = getPdo()->prepare($query);
+    $result->execute($array);
+//    return ['query'=>$query, 'array'=>$array];
+    return $result->fetchAll();
+
+}
