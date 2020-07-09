@@ -208,5 +208,10 @@ function deletePrepare($table, $where_array) {
     }
 
     $stmt = getPdo()->prepare($query);
-    return isset($bind_array) ? $stmt->execute($bind_array) : $stmt->execute();
+    if (!empty($bind_array)) {
+        return $stmt->execute($bind_array);
+    } else {
+        return $stmt->execute();
+    }
+
 }

@@ -120,7 +120,7 @@ if ($auth) {
                             <div class="card">
                                 <img class="card-img rounded mb-3 mb-md-0" src="<?= $selling_car['photoLocation'] ?>" alt="">
                                 <?php if ($selling_car['sold']) { ?>
-                                <div class="card-img-overlay text-black-50 d-flex justify-content-center align-items-end"><p>Sold</p></div>
+                                    <div class="card-img-overlay text-danger h2 d-flex justify-content-center align-items-end"><p>Sold</p></div>
                                 <?php } ?>
                             </div>
                         </div>
@@ -145,7 +145,7 @@ if ($auth) {
                             <div class="card">
                                 <img class="card-img rounded mb-3 mb-md-0" src="<?= $selling_car['photoLocation'] ?>" alt="">
                                 <?php if ($selling_car['sold']) { ?>
-                                    <div class="card-img-overlay text-black-50 d-flex justify-content-center align-items-end"><p>Sold</p></div>
+                                    <div class="card-img-overlay text-danger h2 d-flex justify-content-center align-items-end"><p>Sold</p></div>
                                 <?php } ?>
                             </div>
                         </div>
@@ -216,9 +216,45 @@ if ($auth) {
 <?php
     } else if (isset($_GET['type']) && $_GET['type'] === "appointment") {
 //        show all appointments
+        $appointments = queryBuilderPrepare('appointments',
+            ['appointments.id as appointmentId', 'cars.ownerId', 'appointments.carId', 'appointments.appointmentDateTime as appointmentDateTime', 'appointments.created_at as appointmentsCreatedAt', 'appointments.appointmentNotes as appointmentNotes', 'cars.name', 'cars.photoLocation', 'cars.retailPrice', 'cars.productCost'],
+        ['appointmentUserId'=>isset($_SESSION['customer']) ? $_SESSION['customer']['id'] : $_SESSION['admin']['id']],
+        [],
+        [['cars','appointments.carId','cars.id']]
+        );
 ?>
         <div class="container">
-            <h4 class="my-2">All appointments</h4>
+
+            <?php if (empty($appointments)) { ?>
+                <div class="h4 py-2">
+                    No Appointments made
+                </div>
+                <a class="btn btn-primary" href="/?route=catalog">Go to catalog</a>
+            <?php } else { ?>
+                <h3 class="pt-2">All appointments</h3>
+            <?php foreach ($appointments as $appointment) { ?>
+            <div class="row py-2">
+                <div class="col-md-4">
+                    <a href="#">
+                        <img class="img-fluid rounded mb-3 mb-md-0" src="<?= $appointment['photoLocation'] ?>" alt="">
+                    </a>
+                </div>
+                <div class="col-md-8">
+                    <h4 class="h3"><?= $appointment['name'] ?> <span class="h5">(Owner ID: <?= $appointment['ownerId'] ?>)</span></h4>
+                    <p>Appointment ID: <?= $appointment['appointmentId'] ?> </p>
+                    <p>Appointment Date: <?= $appointment['appointmentDateTime'] ?> </p>
+                    <p>Appointment Create at: <?= $appointment['appointmentsCreatedAt'] ?> </p>
+                    <form action="../handler/deleteAppointmentHandler.php" method="post">
+                        <input type="hidden" name="appointmentId" value="<?= $appointment['appointmentId'] ?>">
+                        <input type="submit" value="Delete appointment" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </input>
+                    </form>
+                </div>
+            </div>
+            <hr>
+            <?php }
+            } ?>
         </div>
 <?php
     } else {
