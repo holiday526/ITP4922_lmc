@@ -6,6 +6,13 @@ session_start();
 <?php $auth = (isset($_SESSION['customer']) || isset($_SESSION['admin'])); ?>
 <?php $user = isset($_SESSION['customer']) ? $_SESSION['customer'] : $_SESSION['admin']; ?>
 
+<?php if (!$auth) {?>
+    <script>
+        alert('Login Required!');
+        window.location.replace(window.location.origin + '/?route=login');
+    </script>
+    <?php die('require login'); ?>
+<?php } ?>
 
 <div class="container mt-4">
     <h4>Customer Register</h4>
