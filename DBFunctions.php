@@ -161,7 +161,7 @@ function insertPrepare($table, $column_array = [], $value_array = []) {
     return !empty($bind_array) ? $sth->execute($bind_array) : $sth->execute(); // return true or false
 }
 
-function updatePrepare($table, $assoc_array) {
+function updatePrepare($table, $assoc_array, $where_assoc_array) {
 
     $update_query = "UPDATE $table SET ";
 
@@ -179,9 +179,18 @@ function updatePrepare($table, $assoc_array) {
         }
     }
 
-    $id = $assoc_array['id'];
+//    $id = $assoc_array['id'];
 
-    $update_query .= " WHERE id = $id";
+    $first = true;
+    foreach ($where_assoc_array as $key => $value) {
+        if ($first) {
+            $update_query .= " WHERE $key = ?";
+            array_push($bind_array, $value);
+            $first = false;
+        } else {
+            $update_query .= " AND $key = ?";
+        }
+    }
 
     $stmt = getPdo()->prepare($update_query);
     $stmt->execute($bind_array);
