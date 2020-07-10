@@ -35,7 +35,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php
     // have errors
     if (!empty($_SESSION['ERROR_REGISTER'])) {
+//        unset($_SESSION['ERROR_REGISTER']);
 ?>
+<?php foreach ($_SESSION['ERROR_REGISTER'] as $key => $value) { ?>
+    <script>
+        alert(<?= $key ?> + " : " + <?= $value ?>);
+    </script>
+<?php } ?>
     <script>
         window.location.replace(window.location.origin + '/?route=register');
     </script>
