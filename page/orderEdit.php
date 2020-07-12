@@ -23,11 +23,9 @@ if (!$auth) { ?>
 <?php
 $order = queryBuilderPrepare('orders',
     ['*'],
-    ['orders.id' => $_GET['orderId']],
-    [],
-//    [['customers', 'cars.ownerId', 'customers.id']]
+    ['orders.id' => $_GET['orderId']]
 )[0];
-
+//dd($order);
 if (!$order) { ?>
     <script>
         alert('Order not existed!');
@@ -46,16 +44,16 @@ if (!$order) { ?>
 
 <?php
 $car = queryBuilderPrepare('cars',
-    ['cars.id as carId', 'cars.sold', 'ownerId', 'cars.name as carName', 'photoLocation', 'cars.description as carDescription', 'odometer', 'transmission', 'fuel_typesId', 'retailPrice', 'customers.name as ownerName'],
-    ['cars.id' => $order['carId']],
-    [],
-    [['customers', 'cars.ownerId', 'customers.id']])[0];
+    ['cars.id', 'cars.sold', 'cars.ownerId', 'cars.name as carName', 'cars.photoLocation', 'cars.description as carDescription', 'cars.odometer', 'cars.transmission', 'cars.fuel_typesId', 'cars.retailPrice'],
+    ['cars.id' => $order['carId']]
+)[0];
+//dd($car);
 $fuel_type = queryBuilderPrepare('fuel_types', ['name'], ["id" => $car['fuel_typesId']])[0]['name'];
 
 if (!$car) { ?>
     <script>
         alert('Car not existed!');
-        window.location.replace(window.location.origin + '/?route=catalog');
+        // window.location.replace(window.location.origin + '/?route=catalog');
     </script>
     <?php die('Car not existed'); ?>
 <?php } ?>

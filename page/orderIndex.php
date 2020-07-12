@@ -21,7 +21,7 @@ if (!$auth) { ?>
 <?php } ?>
 
 <?php $orderRecords = queryBuilderPrepare('orders',
-    ['cars.id as carId', 'orders.id as orderId', 'photoLocation', 'cars.name as carName', 'cars.ownerId', 'orders.created_at as orderCreatedAt'],
+    ['cars.id as carId', 'orders.id as orderId', 'photoLocation', 'cars.name as carName', 'cars.ownerId', 'orders.created_at as orderCreatedAt', 'orders.processed as processed'],
     ['customerId' => $user['id']],
     [],
     [['cars', 'orders.carId', 'cars.id']]
@@ -51,6 +51,10 @@ for ($i = 0; $i < count($orderRecords); $i++ ) {
             <div class="col-md-4">
                 <a href="#">
                     <img class="img-fluid rounded mb-3 mb-md-0" src="<?= $orderRecord['photoLocation'] ?>" alt="">
+                    <?php if ($orderRecord['processed']) { ?>
+                    <div class="card-img-overlay text-success h2 d-flex justify-content-center align-items-end">
+                        <p>Order processed</p></div>
+                    <?php } ?>
                 </a>
             </div>
             <div class="col-md-8">
@@ -61,10 +65,18 @@ for ($i = 0; $i < count($orderRecords); $i++ ) {
                 <form action="../handler/orderHandler.php" method="post">
                     <input type="hidden" name="orderId" value="<?= $orderRecord['orderId'] ?>">
                     <input type="hidden" name="action" value="delete">
-                    <input type="submit" value="Cancel Order" class="btn btn-danger">
+                    <?php if ($orderRecord['processed']) { ?>
+                        <input type="submit" value="Cancel Order" class="btn btn-danger disabled">
+                    <?php } else { ?>
+                        <input type="submit" value="Cancel Order" class="btn btn-danger">
+                    <?php } ?>
                     <span class="glyphicon glyphicon-chevron-right"></span>
                 </form>
-                <a href="/?route=orderEdit&orderId=<?= $orderRecord['orderId'] ?>" class="btn btn-warning">Update Order</a>
+                <?php if ($orderRecord['processed']) { ?>
+                    <a href="/?route=orderEdit&orderId=<?= $orderRecord['orderId'] ?>" class="btn btn-warning disabled">Update Order</a>
+                <?php } else { ?>
+                    <a href="/?route=orderEdit&orderId=<?= $orderRecord['orderId'] ?>" class="btn btn-warning">Update Order</a>
+                <?php } ?>
             </div>
         </div>
         <hr>
