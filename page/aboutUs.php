@@ -33,7 +33,7 @@
                   <p class="card-text">Founder of Auto Car Sales ltd</p>
                 </div>
                 <div class="card-footer">
-                    <a href="#">lmc@autocar.com</a>
+                    <a href="mailto:lmc@autocar.com"></a>
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
                     <p class="card-text">Founder of Auto Car Sales ltd</p>
                 </div>
                 <div class="card-footer">
-                    <a href="mailto:ltc@autocar.com">ltc@autocar.com</a>
+                    <a href="mailto:ltc@autocar.com"></a>
                 </div>
             </div>
         </div>
@@ -59,7 +59,7 @@
                     <p class="card-text">7 years experience on car sales</p>
                 </div>
                 <div class="card-footer">
-                    <a href="#">nkk@autocar.com</a>
+                    <a href="mailto:nkk@autocar.com"></a>
                 </div>
             </div>
         </div>
