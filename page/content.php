@@ -2,10 +2,8 @@
 
 <?php
 dd(queryBuilderPrepare('cars',
-    ['cars.name as carName', 'cars.id as carId', 'customers.id as customerId'],
-    ['cars.id'=>$_GET['carId']],
-    [],
-    [['customers', 'cars.ownerId', 'customers.id']]
+    ['cars.id', 'cars.sold', 'cars.ownerId', 'cars.name as carName', 'cars.photoLocation', 'cars.description as carDescription', 'cars.odometer', 'cars.transmission', 'cars.fuel_typesId', 'cars.retailPrice'],
+    ['cars.id' => 4]
 ));
 ?>
 

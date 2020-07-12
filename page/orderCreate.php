@@ -22,10 +22,10 @@ if (!$auth) { ?>
 
 <?php
 $car = queryBuilderPrepare('cars',
-    ['cars.id as carId', 'cars.sold', 'ownerId', 'cars.name as carName', 'photoLocation', 'cars.description as carDescription', 'odometer', 'transmission', 'fuel_typesId', 'retailPrice', 'customers.name as ownerName'],
+    ['cars.id as carId', 'cars.sold', 'ownerId', 'cars.name as carName', 'photoLocation', 'cars.description as carDescription', 'odometer', 'transmission', 'fuel_typesId', 'retailPrice'],
     ['cars.id' => $_GET['carId']],
-    [],
-    [['customers', 'cars.ownerId', 'customers.id']])[0];
+    []
+    )[0];
 $fuel_type = queryBuilderPrepare('fuel_types', ['name'], ["id" => $car['fuel_typesId']])[0]['name'];
 
 if (!$car) { ?>

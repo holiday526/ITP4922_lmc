@@ -47,6 +47,7 @@ function queryBuilderPrepare($table, $select_array, $where_array = [], $orderby_
         foreach ($where_array as $key => $value) {
             $temp_in_str = "";
             $in_first = true;
+            // Building (?,?) str
             if (is_array($value)) {
                 $temp_in_str = "(";
                 foreach ($value as $v) {
