@@ -12,53 +12,54 @@
         </div>
         <div class="col-lg-6">
             <h2>About Auto Car Sales Ltd</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta dolorem non blanditiis ex fugiat.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, magni, aperiam vitae illum voluptatum aut sequi impedit non velit ab ea pariatur sint quidem corporis eveniet. Odit, temporibus reprehenderit dolorum!</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti eum ratione ex ea praesentium quibusdam? Aut, in eum facere corrupti necessitatibus perspiciatis quis?</p>
+            <p>Auto Car Sales Ltd is an online automotive marketing and classifieds website that connects buyers with sellers of vehicles.</p>
+            <p>Our team continually develops tools and website features that give both consumers shopping our inventory portal and dealers utilizing our product suite the ultimate experience they expect when buying and selling a vehicle.</p>
         </div>
     </div>
     <!-- /.row -->
 
     <!-- Team Members -->
-    <h2>Our Team</h2>
+    <div class="py-2">
+        <h2>Our Team</h2>
+    </div>
 
     <div class="row">
         <div class="col-lg-4 mb-4">
             <div class="card h-100 text-center">
-                <img class="card-img-top" src="http://placehold.it/750x450" alt="">
+                <img class="card-img-top" src="/img/LMC.jpg" alt="">
                 <div class="card-body">
-                    <h4 class="card-title">Team Member</h4>
-                    <h6 class="card-subtitle mb-2 text-muted">Position</h6>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
+                    <h4 class="card-title">Liong Man Chun</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">CEO</h6>
+                  <p class="card-text">Founder of Auto Car Sales ltd</p>
                 </div>
                 <div class="card-footer">
-                    <a href="#">name@example.com</a>
+                    <a href="#">lmc@autocar.com</a>
                 </div>
             </div>
         </div>
         <div class="col-lg-4 mb-4">
             <div class="card h-100 text-center">
-                <img class="card-img-top" src="http://placehold.it/750x450" alt="">
+                <img class="card-img-top" src="/img/LTC.jpg" alt="">
                 <div class="card-body">
-                    <h4 class="card-title">Team Member</h4>
-                    <h6 class="card-subtitle mb-2 text-muted">Position</h6>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
+                    <h4 class="card-title">Leung Tsz Chun</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">CEO</h6>
+                    <p class="card-text">Founder of Auto Car Sales ltd</p>
                 </div>
                 <div class="card-footer">
-                    <a href="#">name@example.com</a>
+                    <a href="mailto:ltc@autocar.com">ltc@autocar.com</a>
                 </div>
             </div>
         </div>
         <div class="col-lg-4 mb-4">
             <div class="card h-100 text-center">
-                <img class="card-img-top" src="http://placehold.it/750x450" alt="">
+                <img class="card-img-top" src="/img/NKK.jpg" alt="">
                 <div class="card-body">
-                    <h4 class="card-title">Team Member</h4>
-                    <h6 class="card-subtitle mb-2 text-muted">Position</h6>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aut mollitia eum ipsum fugiat odio officiis odit.</p>
+                    <h4 class="card-title">Ng Ka Ki</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Sales Manager</h6>
+                    <p class="card-text">7 years experience on car sales</p>
                 </div>
                 <div class="card-footer">
-                    <a href="#">name@example.com</a>
+                    <a href="#">nkk@autocar.com</a>
                 </div>
             </div>
         </div>
