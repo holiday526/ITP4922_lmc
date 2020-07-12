@@ -70,6 +70,7 @@
                         if (isset($_SESSION['admin']) && $_SESSION['admin']) {
                         ?>
                         <a class="dropdown-item" href="/?route=allOrder">Members all orders</a>
+                        <a class="dropdown-item" href="/?route=allCatalog">Manage Car Catalogs</a>
                         <div class="dropdown-divider"></div>
                         <?php
                         }

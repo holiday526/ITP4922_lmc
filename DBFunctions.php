@@ -236,11 +236,13 @@ function searchPrepare($search_str) {
           OR pros LIKE ?
           OR cons LIKE ?
           OR specifications LIKE ?
-          OR transmission LIKE ? ";
+          OR transmission LIKE ? 
+          OR year_manufactured LIKE ?
+          OR color LIKE ? ";
 
     $array = [];
 
-    for ($i = 0; $i < 7; $i++) {
+    for ($i = 0; $i < 9; $i++) {
         array_push($array, "%".$_POST['search']."%");
     }
 
