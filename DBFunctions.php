@@ -8,9 +8,9 @@ function dd($collection) {
 
 function getPdo() {
     $dbh = new PDO(
-        'mysql:host=192.168.1.100;dbname=autocardb;charset=utf8mb4',
+        'mysql:host=127.0.0.1;dbname=autocarsales;charset=utf8mb4',
         'root',
-        '2fi@Solutions'
+        'password'
     );
 
     return $dbh;
